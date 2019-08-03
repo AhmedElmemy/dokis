@@ -31,7 +31,7 @@ class CommandError(commands.Cog):
         elif isinstance(error, commands.MissingPermissions):
             await ctx.send("I-I'm terribly sorry, but you don't seem to have the permissions to use this command...")
  
-        elif isinstance(error, checks.blank):
+        elif isinstance(error, checks.blank) or isinstance(error, commands.CommandOnCooldown):
             return
 
         else:

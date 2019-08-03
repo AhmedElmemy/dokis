@@ -1,5 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
 #Imports
 
@@ -10,6 +11,7 @@ class Hug(client.Cog):
          self.b = bot 
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def hug(self,ctx, *, message=None):
         # TODO: Find a way to condense these two if statements into one
 

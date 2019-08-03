@@ -1,7 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
-from Cogs.config import conf
-#Imports
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 
 
 class Tickle(client.Cog):#Class thing no touchy!!!111
@@ -10,6 +9,7 @@ class Tickle(client.Cog):#Class thing no touchy!!!111
          self.b = bot #Please no touchy thx
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def tickle(self,ctx): 
         laughs = ["Ahahahaha!!", "Hehehehehe!", "N-Now, hold on! Th-This isn't right! Ahahaha!!", "Ehehehehehehe!!!"]
         async with ctx.message.channel.typing():

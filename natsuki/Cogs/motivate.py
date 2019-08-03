@@ -1,7 +1,7 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
-#Imports
 
 
 class Motivate(client.Cog):#Class thing no touchy!!!111

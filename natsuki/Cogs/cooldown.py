@@ -12,15 +12,13 @@ class Cooldown(client.Cog):
     async def on_command_error(self, ctx, exception):
         if isinstance(exception, discord.ext.commands.errors.CommandOnCooldown):
             if ctx.command == "tickle":
-                await ctx.send("Time out! Time out!! Ahaha!")
+                await ctx.send("Hey! At least let me recover from you tickling me!")
             elif ctx.command == "hug":
-                await ctx.send("Give me a few seconds; I'm still getting over how nice that last hug was!")
-            elif ctx.command == "joke":
-                await ctx.send("Hold on! I need time to think of another joke for you...")
+                await ctx.send("You just hugged me! C-Can't you wait a bit before you do it again?")
+            elif ctx.command == "motivate":
+                await ctx.send("I just motivated someone! I need time to get ready!")
             elif ctx.command == "headpat":
-                await ctx.send("Let me fix my bow real quick...")
-            elif ctx.command == "ask":
-                await ctx.send("Please, please! I can only answer so many of your questions at once!")
+                await ctx.send("Ugh. Can you let me fix my hair first?!")
 
 
 def setup(bot):

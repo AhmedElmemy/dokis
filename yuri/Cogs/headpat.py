@@ -1,5 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
 #Imports
 
@@ -10,6 +11,7 @@ class Headpat(client.Cog):#Class thing no touchy!!!111
          self.b = bot #Please no touchy thx
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def headpat(self,ctx):
         if ctx.guild is None:#PM'S
             headpat_list0 = ["Mmm... :relaxed:", "Oh... I'm not sure how to feel about that...", "H-Hey, could you be a little more gentle, please?", "That feels rather nice...", "T-Thank you."]

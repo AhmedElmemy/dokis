@@ -1,6 +1,7 @@
 import discord, random, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
+from Cogs.config import conf
 
 
 class Headpat(client.Cog):#Class thing no touchy!!!111
