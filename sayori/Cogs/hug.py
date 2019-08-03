@@ -1,7 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
-from Cogs.config import conf
-#Imports
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 
 
 class Hug(client.Cog):
@@ -10,7 +9,8 @@ class Hug(client.Cog):
          self.b = bot
 
     @client.command()
-    async def hug(self,ctx, *, message=None): 
+    @client.cooldown(1, 7, BucketType.user)
+    async def hug(self, ctx, *, message=None): 
         member = ctx.message.content.split(" ")[0]
         if message is None: #No argument? Just assume it's you
             user = ctx.author

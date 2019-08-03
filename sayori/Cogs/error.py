@@ -31,6 +31,9 @@ class CommandError(commands.Cog):
         elif isinstance(error, commands.MissingPermissions):
             await ctx.send("Sorry, but you don't have permission to use this command. You might need to ask the Club Leader to switch this.")
 
+        elif isinstance(error, commands.CommandOnCooldown): # Handled in cooldown cog
+            return
+
         else:
             tra = traceback.format_exception_only(type(error), error)
             e = discord.Embed(description="`Oops! That's not supposed to happen, here's the traceback below.` ```py\n%s\n``` \nLooks like you encountered an issue! If you want, you can report this by clicking [here!](https://forms.gle/hJ3KHVwKMFzfs5eq9) (It takes you to a form where you can explain the bug in detail.)" % ''.join(tra), file=sys.stderr, color=conf.err)

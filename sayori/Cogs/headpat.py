@@ -1,7 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
-from Cogs.config import conf
-#Imports
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 
 
 class Headpat(client.Cog):#Class thing no touchy!!!111
@@ -10,6 +9,7 @@ class Headpat(client.Cog):#Class thing no touchy!!!111
          self.b = bot #Please no touchy thx
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def headpat(self,ctx): 
         headpat_list = ["Hehehe!~", "Just don't mess up my bow!", "S-stop being so silly! :blush:", "Well, my hair's already pretty messy, so I don't see an issue!", "Hehehe! Thank you!"]        
         async with ctx.message.channel.typing():
