@@ -1,5 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
 #Imports
 
@@ -10,6 +11,7 @@ class Poems(client.Cog):
          self.b = bot
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def poems(self,ctx):
         async with ctx.message.channel.typing():
             await asyncio.sleep(conf.type_speed)

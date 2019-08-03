@@ -1,5 +1,6 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
+from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
 #Imports
 
@@ -7,9 +8,10 @@ from Cogs.config import conf
 class Feed(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot #
+         self.b = bot
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def feed(self,ctx, arg1=None): 
         if arg1 is None:
             await ctx.send("H-hey! Don't feel like you have to feed me anything! I'm okay!")
@@ -25,7 +27,7 @@ class Feed(client.Cog):
             async with ctx.message.channel.typing():
                 await asyncio.sleep(conf.type_speed)  
             await ctx.send("Oooo! Japanese food! Reminds me of home!") 
-        #------------------- Japenese Food ------------------- 
+        #------------------- Japanese Food ------------------- 
 
 
         elif arg1 == "🍕":
