@@ -28,6 +28,7 @@ class Developer(client.Cog):
         print(chalk.yellow("A developer has restarted the bot!"))
         print("\n")
         subprocess.call([sys.executable, "maid.py"])
+        await quit()
 
 
     @client.command() # For the love of mighty please don't make this an actual command for the public.
