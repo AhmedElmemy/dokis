@@ -11,8 +11,8 @@ class conf():
     cogd = "Cogs"
     type_speed = 2
     playing_msg = ["Type 'n_help' for help!","Doki Doki Literature Club","Don't Starve","Cooking Mama", "some anime through your computer!"]
-    admins = [480580173431832577, 310496481435975693, 270057011251642368]
-    #         Tsumik              IDroid              Cole 
+    admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
+    #         Tsumik              IDroid              Cole                Illuminati
     test_mode = False  #To enable this function, use any value that is NOT "False" Otherwise you would be disabling this function
 
     if test_mode is False:
