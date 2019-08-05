@@ -1,0 +1,15 @@
+- Fixed self-hug responses [MONIKA, NATSUKI, SAYORI]
+
+- Dokis should tell us poems now [ALL DOKIS]
+
+- Fixed mentioned love responses [ALL DOKIS]
+
+- All commands work in DMs now (except Yuri's Act toggle) [ALL DOKIS]
+
+- Sayori and Natsuki won't print "hugs None" unintentionally [NATSUKI, SAYORI]
+
+- Fixed an issue where Natsuki didn't ping the user when hugging them [NATSUKI]
+
+- Sayori no longer butts into another doki's conversation [SAYORI]
+
+- The rest of the dokis respond to "@MC loves you" in its own way now (it used to be just Sayori doing it) [MONIKA, NATSUKI, YURI]
