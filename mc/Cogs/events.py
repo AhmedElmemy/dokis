@@ -1,4 +1,4 @@
-import discord, random, asyncio, chalk
+import discord, random, asyncio, chalk, re
 from discord.ext import commands as client
 from Cogs.config import conf
 
@@ -59,136 +59,69 @@ class Event(client.Cog):
                         pass
                         
             # -------------------------------------------------------Tagging-------------------------------------------------------
-            # TODO: Complete TODOs in this section.
-        if message.content.lower().startswith(f"<@{self.b.user.id}>") or message.content.lower().startswith(f"<@!{self.b.user.id}>"):
-            if len(message.content.lower().split(" ")) == 1:
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+        if re.search(f"^<@!?{self.b.user.id}>", message.content):
+            hello_list = ["Hi, I guess.", "Hello..."]
+            afternoon_list = ["Is it a good afternoon?", "What? It's the afternoon?", "Ehhhhhh..."]
+
+            # ---------------------------------------------------- Responding -----------------------------------------------------
+            content = re.sub(f'^<@!?{self.b.user.id}>', "", message.content).strip()
+            async with message.channel.typing():
+                await asyncio.sleep(conf.type_speed)
+            if content == "":
                 await message.channel.send("Hm? What is it?")
-                return
+
+            elif re.search(r"(^|[^A-Za-z])(hi|hello|hey)([^A-Za-z]|$)", message.content, re.IGNORECASE):
+                await message.channel.send(random.choice(hello_list))
+
+            elif re.search("((^|\s)ily(\s|$)|(^|\s)i\s.*love.*you)", message.content, re.IGNORECASE):
+                await message.channel.send("...")
+
+            elif re.search("good.*morning", message.content, re.IGNORECASE):
+                await message.channel.send(":zzz: Huh- morning already?")
+
+            elif re.search("good.*afternoon", message.content, re.IGNORECASE):
+                await message.channel.send(random.choice(afternoon_list))
+
+            elif re.search("good.*night", message.content, re.IGNORECASE):
+                await message.channel.send("Um... Good night, I guess.")
+
+            elif re.search("you('re|.*are).*(pretty|beautiful|adorable|cute)", message.content, re.IGNORECASE):
+                await message.channel.send("No I’m not.")
+
+            elif re.search("((^|\s)i\s.*apologi(s|z)e|sorry)", message.content, re.IGNORECASE):
+                await message.channel.send("I-It’s ok.")
+
+            elif re.search("(i'm.*sick|puking|not.*feeling.*(good|great))", message.content, re.IGNORECASE):
+                await message.channel.send("I’m not one for that stuff, maybe ask Monika.")
+
+            elif re.search("(yuri|sayori|natsuki|monika).*best.*(girl|doki)", message.content, re.IGNORECASE):
+                await message.channel.send("I’ll have to agree with you there.")
+
+            elif re.search("(you('re|.*are)|^is|mc).*best.*doki", message.content, re.IGNORECASE):
+                await message.channel.send("Who? Me? How?")
+
+            elif re.search("(sayori.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.sayori_id}>.*loves.*you)", message.content, re.IGNORECASE):
+                await message.channel.send("Of course she does. She loves everyone.")
+
+            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.natsuki_id}>.*loves.*you)", message.content, re.IGNORECASE):
+                await message.channel.send("She does? That's a surprise.")
+
+            elif re.search("(yuri.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.yuri_id}>.*loves.*you)", message.content, re.IGNORECASE):
+                await message.channel.send("Does she? It's hard to tell when she's so quiet.")
+
+            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.monika_id}>.*loves.*you)", message.content, re.IGNORECASE):
+                await message.channel.send("She doesn't just love me. She's a bit of a yandere.")
+
+            elif re.search(r".+\s.*loves.*you", message.content, re.IGNORECASE):
+                await message.channel.send("Um… what?")
+
+            elif "test" in message.content.lower():
+                await message.channel.send("Yes, I'm fine.")
 
             else:
-                message1 = message.content.lower().split(" ")[1]
+                await message.channel.send("Eh?")
 
-                if "hi" in message.content.lower() or "hello" in message.content.lower() or "hey" in message.content.lower():
-                    hello_list = ["Hi, I guess.", "Hello..."]                    
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send(random.choice(hello_list))
-                    return
-
-                elif "i love you" in message.content.lower() or "ily" in message.content.lower():                   
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send("...")
-                    return 
-
-                elif "good night" in message.content.lower() or "goodnight" in message.content.lower():                
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send("Um... Good night, I guess.")
-                    return
-
-                elif "good morning" in message.content.lower() or "goodmorning" in message.content.lower():                
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send(":zzz: Huh- morning already?")
-                    return
-
-                elif "good afternoon" in message.content.lower() or "goodafternoon" in message.content.lower():
-                    goodafternoon_list = ["Is it a good afternoon?", "What? It's the afternoon?", "Ehhhhhh..."]                    
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send(random.choice(goodafternoon_list))
-                    return
-
-                elif "you are" in message.content.lower() or "you're" in message.content.lower():
-                    if "pretty" in message.content.lower() or "beautiful" in message.content.lower() or "adorable" in message.content.lower() or "cute" in message.content.lower() or "hot" in message.content.lower() or "amazing" in message.content.lower():
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)  
-                        await message.channel.send("No I’m not.")
-                        return
-
-                elif "i apologise" in message.content.lower() or "sorry" in message.content.lower() or "i apologize" in message.content.lower():                  
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send("I-It’s ok.")
-                    return 
-
-                elif 'loves you' in message.content.lower():
-                    member = message.content.split(" ")[1]
-                    if 'nigger' in message.content.lower():
-                        return
-
-                    elif member == "loves":
-                        await message.channel.send("Ehh?")
-                        return
-
-                    elif member.lower() == f'<@{conf.natsuki_id}>': #Natsuki
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)  
-                        await message.channel.send("She does? That's a surprise.")
-                        return
-                        
-                    elif member.lower() == f'<@{conf.yuri_id}>': #Yuri
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)  
-                        await message.channel.send("Does she? It's hard to tell when she's so quiet.")
-                        return
-                    elif member.lower() == f'<@{conf.monika_id}>': #Monika
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)  
-                        await message.channel.send("She doesn't just love me. She's a bit of a yandere.")
-                        return
-
-                    elif member.lower() == f'<@{conf.sayori_id}>': #Sayori
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send("Of course she does. She loves everyone.")
-                        return
-
-                    elif member.lower() == 'everyone' or member.lower() == '@everyone' or member.lower() == '@here' or member.lower() == 'everybody':
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)  
-                        await message.channel.send("Everyone? How?!")
-                        return
-
-                    else:
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)  
-                        await message.channel.send("Um… what?")
-                        return
-                    
-                elif "i'm sick" in message.content.lower() or "puke" in message.content.lower() or "not feeling good" in message.content.lower() or "not feeling great" in message.content.lower():
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)  
-                    await message.channel.send("I’m not one for that stuff, maybe ask Monika.")
-                    return 
-
-                elif "best doki" in message.content.lower() or "best girl" in message.content.lower():
-                    if "monika" in message1.lower() or "natsuki" in message1.lower() or "yuri" in message1.lower() or "sayori" in message1.lower() or message1 == f"<@{conf.monika_id}>" or message1 == f"<@{conf.natsuki_id}>" or message1 == f"<@{conf.yuri_id}>" or message1 == f"<@{conf.sayori_id}>":
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send("I’ll have to agree with you there.")
-                        return 
-
-                    elif message1 == "is" or message1 == f"<@{conf.mc_id}>" or message1 == "you" or message1 == "you're":
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send("Who? Me? How?")
-                        return
-
-                elif "test" in message.content.lower():
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)
-                    await message.channel.send("Yes, I'm fine.")
-
-                else:
-                    async with message.channel.typing():
-                        await asyncio.sleep(conf.type_speed)
-                    await message.channel.send("Eh?")
-
-            # -------------------------------------------------------Tagging-------------------------------------------------------
+        # -------------------------------------------------------Tagging-------------------------------------------------------
 
 
 
