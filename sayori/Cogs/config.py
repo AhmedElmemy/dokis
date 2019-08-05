@@ -1,22 +1,26 @@
+import json
+
+
 class conf():
 
-    token = "token"
+    config = json.loads(open("../config.json", "r").read())
+    token = config["sayori_token"]
     prefix1 = "s_"
     prefix2 = "S_"
     name = "Sayori"
     cogd = "Cogs"
     type_speed = 2
-    playing_msg = [f"Type 's_help' for help!","Doki Doki Literature Club","with the crayons!","Katawa Shoujo","with Mr. Cow!", "with a noose!"]
+    playing_msg = [f"Type 's_help' for help!","Doki Doki Literature Club","with the crayons!","Katawa Shoujo","with Mr. Cow!","with a noose!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368]
     #         Tsumiki             IDroid              Cole 
     test_mode = False  #To enable this function, use any value that is NOT "False" Otherwise you would be disabling this function
 
     if test_mode is False:
         sharding = True
-        version = "2.3L Club Sandwich"
+        version = "4.0L Dragonfruit"
     else:
         sharding = False
-        version = "2.3B Club Sandwich" # Testing mode should be beta.
+        version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
 
     ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''
@@ -26,7 +30,7 @@ class conf():
     suc = 0xff42e2 # The Success (i did a thing) Embed Colour
 
     ''' These are just some error quotes so i can change them really quickly instead of doing the same quote for each error in every file '''
-    everyone_tag = "Nice try, you meanie."
+    everyone_tag = "We don't need to get everyone's attention!"
 
     ''' These are for the chat trigger'''
     w_tog_on = []

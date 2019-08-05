@@ -1,6 +1,10 @@
+import json
+
+
 class conf():
 
-    token = "token"
+    config = json.loads(open("../config.json", "r").read())
+    token = config["natsuki_token"]
     prefix1 = "n_"
     prefix2 = "N_"
     name = "Natsuki"
@@ -13,10 +17,10 @@ class conf():
 
     if test_mode is False:
         sharding = True
-        version = "2.3L Club Sandwich"
+        version = "4.0L Dragonfruit"
     else:
         sharding = False
-        version = "2.3B Club Sandwich" # Testing mode should be beta.
+        version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
 
     ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''

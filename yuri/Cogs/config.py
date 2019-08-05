@@ -1,6 +1,10 @@
+import json
+
+
 class conf():
 
-    token = "token"
+    config = json.loads(open("../config.json", "r").read())
+    token = config["yuri_token"]
     prefix1 = "y_"
     prefix2 = "Y_"
     name = "Yuri"
@@ -13,10 +17,10 @@ class conf():
     
     if test_mode is False:
         sharding = True
-        version = "2.3L Club Sandwich"
+        version = "4.0L Dragonfruit"
     else:
         sharding = False
-        version = "2.3B Club Sandwich" # Testing mode should be beta.
+        version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
     
     ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''
@@ -29,7 +33,7 @@ class conf():
     act2 = []
 
     ''' These are just some error quotes so i can change them really quickly instead of doing the same quote for each error in every file '''
-    everyone_tag = "Hey! Do you **WANT** everyone to freak out in the chat?! Because I won't let you do that!"
+    everyone_tag = "I'm not getting everyone's attention."
 
     ''' These are for the chat trigger'''
     w_tog_on = []

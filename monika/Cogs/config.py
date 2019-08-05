@@ -1,12 +1,15 @@
+import json
+
+
 class conf():
 
-    token = "token"
+    config = json.loads(open("../config.json", "r").read())
+    token = config["monika_token"]
     prefix1 = "m_"
     prefix2 = "M_"
     name = "Monika"
     cogd = "Cogs"
     type_speed = 2
-    cooldown_timer = 1.5
     playing_msg = ["Type 'm_help' for help!","Doki Doki Literature Club","the piano!", "Super Smash Bros Ultimate.", "If My Heart Had Wings", "with you!", "Just Monika.", "from your computer!", "your reality!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368]
     #         Tsumiki             IDroid              Cole 
@@ -14,10 +17,10 @@ class conf():
 
     if test_mode is False:
         sharding = True
-        version = "2.3L Club Sandwich"
+        version = "4.0L Dragonfruit"
     else:
         sharding = False
-        version = "2.3B Club Sandwich" # Testing mode should be beta.
+        version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
 
     ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''
