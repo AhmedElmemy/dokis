@@ -22,7 +22,7 @@ class CommandError(commands.Cog):
         if isinstance(error, commands.DisabledCommand):
             print(chalk.red(f"{ctx.command} is disabled with the command deco"))
 
-        elif isinstance(error, commands.CommandNotFound):
+        elif isinstance(error, commands.CommandNotFound) or isinstance(error, commands.CheckFailure):
             return
         
         elif isinstance(error, commands.NoPrivateMessage):

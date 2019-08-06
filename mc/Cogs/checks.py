@@ -8,5 +8,5 @@ def dev(): # Any command with this check can only be run with those whose ID is 
         if ctx.author.id in conf.admins:
             return True
         else:
-            raise blank
+            pass
     return commands.check(predicate)
