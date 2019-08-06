@@ -1,7 +1,6 @@
 import discord, random, asyncio, sys
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 
 class Testing(client.Cog):

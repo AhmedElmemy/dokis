@@ -31,7 +31,7 @@ class CommandError(commands.Cog):
         elif isinstance(error, commands.MissingPermissions):
             await ctx.send("I-I'm terribly sorry, but you don't seem to have the permissions to use this command...")
  
-        elif isinstance(error, checks.blank) or isinstance(error, commands.CommandOnCooldown):
+        elif isinstance(error, commands.CommandOnCooldown):
             return
 
         else:
@@ -42,8 +42,6 @@ class CommandError(commands.Cog):
             await ctx.send(embed=e)
             print(chalk.yellow(f"[INFO] Warning! The command '{ctx.command}' has just Errored!")) 
             print(chalk.red(f"[ERROR] Traceback: %s" % ''.join(tra)))
-
-
 
 
 def setup(bot):

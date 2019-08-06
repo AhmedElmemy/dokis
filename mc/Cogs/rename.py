@@ -1,7 +1,6 @@
 import discord, asyncio
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 
 class Rename(client.Cog):

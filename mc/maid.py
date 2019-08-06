@@ -1,7 +1,7 @@
 import discord, os, traceback, chalk, sys
 from discord.ext import commands
 from Cogs.config import conf
-#Import some important modules
+
 
 if conf.test_mode is True:
     print(chalk.red('''---------------------Testing Mode--------------------- 
@@ -20,13 +20,13 @@ else:
 
 
 async def prefix(bot, message):
-  return [conf.prefix1, conf.prefix2]  # or a list, ["pre1","pre2"]
+  return [conf.prefix1, conf.prefix2]
 
 
 if conf.sharding is True:
-    client = commands.AutoShardedBot(command_prefix=prefix, status=discord.Status.idle, activity=discord.Game(name="Starting Up...")) # Defining what our prefix for the bot will be
+    client = commands.AutoShardedBot(command_prefix=prefix, status=discord.Status.idle, activity=discord.Game(name="Starting Up..."))
 elif conf.sharding is False: #Just so cheezy's pc doesn't melt.
-    client = commands.Bot(command_prefix=prefix, status=discord.Status.idle, activity=discord.Game(name="Starting Up...")) # Defining what our prefix for the bot will be
+    client = commands.Bot(command_prefix=prefix, status=discord.Status.idle, activity=discord.Game(name="Starting Up..."))
 
 
 Cogs = conf.cogd

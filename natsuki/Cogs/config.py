@@ -13,7 +13,7 @@ class conf():
     playing_msg = ["Type 'n_help' for help!","Doki Doki Literature Club","Don't Starve","Cooking Mama", "some anime through your computer!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
     #         Tsumik              IDroid              Cole                Illuminati
-    test_mode = False  #To enable this function, use any value that is NOT "False" Otherwise you would be disabling this function
+    test_mode = False  # To enable this function, change this to True.
 
     if test_mode is False:
         sharding = True
@@ -23,19 +23,20 @@ class conf():
         version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
 
-    ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''
-    err = 0xC91313 # The Error Embed Colour
-    norm = 0xff42e2 # The Normal or Yeah sure i did this command heres an embed color Embed Colour
-    warn = 0xff42e2 # The Warning Embed Colour
-    suc = 0xff42e2 # The Success i did a thing Embed Colour
+    # These hex codes are for embed colors. The "norm" hex is different for each doki and MC.
+    err = 0xC91313 # The Error Embed Color
+    norm = 0xff42e2 # The Normal Embed Color
+    warn = 0xff42e2 # The Warning Embed Color
+    suc = 0xff42e2 # The Success Embed Color
 
-    ''' These are just some error quotes so i can change them really quickly instead of doing the same quote for each error in every file '''
+    # Response for if someone tries to ping everyone upon bot interaction.
     everyone_tag = "Ha! Nice try trying to ping everyone, you baka!!!"
 
-    ''' These are for the chat trigger'''
+    # TODO: Move this to database.
+    # This array will be filled with guild IDs on startup, with indexes that can be removed by disabling chat triggers or shutting down the bot.
     w_tog_on = []
     
-    ''' Doki Bot's ID'S '''
+    ''' Doki Bot's IDs'''
     if test_mode is True:
         natsuki_id = 531555963908653076
         monika_id = 531556928732528670 

@@ -2,7 +2,7 @@
 from discord.ext import commands as client
 from Cogs.config import conf
 from contextlib import redirect_stdout
-#Imports
+
 
 checks = Cogs.checks
 

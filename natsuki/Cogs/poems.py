@@ -1,7 +1,6 @@
 import discord, random, asyncio
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 
 class Poems(client.Cog):
@@ -172,8 +171,6 @@ Because you think of me.
  
 Because you, because you, because you.''')
 #--------------------------------------------------------------
-
-
 
 
 def setup(bot):#No no child keep your hands off or this will break and not load

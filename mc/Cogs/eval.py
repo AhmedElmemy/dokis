@@ -2,7 +2,7 @@
 from discord.ext import commands as client
 from Cogs.config import conf
 from contextlib import redirect_stdout
-#Imports
+
 
 checks = Cogs.checks
 
@@ -64,8 +64,6 @@ class Eval(client.Cog):
             else:
                 self._last_result = ret
                 await ctx.send(f'```py\n{value}{ret}\n```')
-
-
 
                 
 def setup(bot):

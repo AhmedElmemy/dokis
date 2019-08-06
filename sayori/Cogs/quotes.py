@@ -2,13 +2,12 @@ import discord, random, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
-#Imports
 
 
-class Quotes(client.Cog):#Class thing no touchy!!!111
+class Quotes(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot #Please no touchy thx
+         self.b = bot
 
     @client.command()
     @client.cooldown(1, 7, BucketType.user)
@@ -19,5 +18,5 @@ class Quotes(client.Cog):#Class thing no touchy!!!111
         await ctx.send(random.choice(quote_list))
 
 
-def setup(bot):#No no child keep your hands off or this will break and not load
+def setup(bot):
     bot.add_cog(Quotes(bot))

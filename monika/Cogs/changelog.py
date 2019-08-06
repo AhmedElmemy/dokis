@@ -1,7 +1,6 @@
 import discord, random, asyncio
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 
 class Changelog(client.Cog):
@@ -11,7 +10,7 @@ class Changelog(client.Cog):
          self.f = open("../changelog.txt", "r")
 
     @client.command()
-    async def changelog(self,ctx): 
+    async def changelog(self,ctx):
         e = discord.Embed(title=f"A bug-fixing update! This has been changed on August 2, 2019. Version: {conf.version}",
                           description=f"```{self.f.read()}```", color=conf.norm)
         e.set_author(name=f"The Changelog for {conf.name}.",icon_url=self.b.user.avatar_url)

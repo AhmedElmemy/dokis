@@ -36,16 +36,16 @@ class Developer(client.Cog):
         print(chalk.yellow("A developer has restarted the bot!"))
         print("\n")
         subprocess.call([sys.executable, "maid.py"])
+        await quit()
 
-
-    @client.command() # For the love of mighty please don't make this an actual command for the public.
+    @client.command()
     @checks.dev()
-    async def say(self, ctx, *, message): # A commmand that makes the bot say the given argument and deletes the message the user sent before
+    async def say(self, ctx, *, message):
         try:
-            await ctx.message.delete() # Deletes our message
-            await ctx.send(message) # sends our message
-        except discord.errors.Forbidden: # If we can't delete it then 
-            await ctx.send(message) # Just send the message
+            await ctx.message.delete()
+            await ctx.send(message)
+        except discord.errors.Forbidden:
+            await ctx.send(message)
 
 
 def setup(bot):

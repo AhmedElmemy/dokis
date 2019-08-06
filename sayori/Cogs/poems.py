@@ -2,7 +2,6 @@ import discord, random, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
-#Imports
 
 
 class Poems(client.Cog):
@@ -132,7 +131,6 @@ Get out of my head before I finish writing this poem.
 But a poem is never actually finished.
 It just stops moving.''')
 #--------------------------------------------------------------
-
 
 
 def setup(bot):

@@ -1,7 +1,6 @@
 import discord, random, Cogs.checks, asyncio, sys
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 checks = Cogs.checks
 class Debug(client.Cog):

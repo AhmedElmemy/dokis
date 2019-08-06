@@ -1,16 +1,15 @@
 import discord, random, asyncio
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 
-class Feed(client.Cog):#Class thing no touchy!!!111
+class Feed(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot #Please no touchy thx
+         self.b = bot
 
     @client.command()
-    async def feed(self,ctx, arg1=None): # we make arg1 so we can have the command as this "n_ask my dad is in jail lmao" and it will obviously respond, if your missing the "answer arg" which comes after the command then the command will obviously not run
+    async def feed(self,ctx, arg1=None):
         if arg1 is None:
             await ctx.send("I suppose I am a bit hungry... What do you recommend?")
             
@@ -157,7 +156,6 @@ class Feed(client.Cog):#Class thing no touchy!!!111
                 await asyncio.sleep(conf.type_speed)  
             await ctx.send("Um.. not to be rude, but I don't think this is edible.")        
             #------------------- Not Listed ------------------- '''
-
 
 
 def setup(bot):#No no child keep your hands off or this will break and not load

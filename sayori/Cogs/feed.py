@@ -2,7 +2,6 @@ import discord, random, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
-#Imports
 
 
 class Feed(client.Cog):
@@ -157,8 +156,7 @@ class Feed(client.Cog):
             async with ctx.message.channel.typing():
                 await asyncio.sleep(conf.type_speed)  
             await ctx.send("Ptoo ptoo! This isn't food, you meanie!")        
-            #------------------- Not Listed ------------------- '''
-
+        #------------------- Not Listed ------------------- '''
 
 
 def setup(bot):

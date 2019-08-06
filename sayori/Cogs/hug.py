@@ -3,6 +3,7 @@ import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
 
+
 class Hug(client.Cog):
 
     def __init__(self, bot):
@@ -22,7 +23,7 @@ class Hug(client.Cog):
         elif message == '@everyone' or message == '@here':
             await ctx.send(conf.everyone_tag)
             
-        elif message == f'<@{self.b.user.id}>': # Oh noes it's me!
+        elif message == f'<@{self.b.user.id}>': # Oh no it's me!
             hug_list = [f"...fine. *hugs myself*", "Well, if you say so... *hugs myself*", "*hugs myself* Huh. Now I see why you guys like my hugs so much."]
             async with ctx.message.channel.typing():
                 await asyncio.sleep(conf.type_speed)

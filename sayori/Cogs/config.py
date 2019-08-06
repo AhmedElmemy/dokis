@@ -5,8 +5,8 @@ class conf():
 
     config = json.loads(open("../config.json", "r").read())
     token = config["sayori_token"]
-    prefix1 = "s_"
-    prefix2 = "S_"
+    prefix1 = "t_"
+    prefix2 = "T_"
     name = "Sayori"
     cogd = "Cogs"
     type_speed = 2

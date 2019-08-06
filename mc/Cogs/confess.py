@@ -25,5 +25,6 @@ class Confess(client.Cog):
         else:
             await ctx.send(f"*starts to blush* Ok, I'll admit it {arg}, I love you!")
 
+
 def setup(bot):
     bot.add_cog(Confess(bot))

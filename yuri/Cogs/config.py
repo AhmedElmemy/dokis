@@ -13,7 +13,7 @@ class conf():
     playing_msg = ["Type 'y_help' for help!", "Doki Doki Literature Club", "with knifes!", "Everlasting Summer", "Yandere Simulator", "with your pen!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
     #         Tsumiki             IDroid              Cole                Illuminati
-    test_mode = False  #To enable this function, use any value that is NOT "False" Otherwise you would be disabling this function
+    test_mode = False # To enable this function, change this to True.
     
     if test_mode is False:
         sharding = True
@@ -23,22 +23,23 @@ class conf():
         version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
     
-    ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''
-    err = 0xC91313 # The Error Embed Colour
-    norm = 0x8524c8 # The Normal or Yeah sure i did this command heres an embed color Embed Colour
-    warn = 0xff42e2 # The Warning Embed Colour
-    suc = 0xff42e2 # The Success i did a thing Embed Colour
+    # These hex codes are for embed colors. The "norm" hex is different for each doki and MC.
+    err = 0xC91313 # The Error Embed Color
+    norm = 0x8524c8 # The Normal Embed Color
+    warn = 0xff42e2 # The Warning Embed Color
+    suc = 0xff42e2 # The Success Embed Color
 
-    ''' Special thing for yuri as she holds the act command, on startup this list will be empty though if using act1 or 2 they will have ID's added, once again if a startup was to occur, even if there was ID's in this list, the list itself would be wiped '''
+    # This array will be empty on startup, but will fill up with the IDs of guilds that enable Act 2 for Yuri. It is cleared on shutdown.
     act2 = []
 
-    ''' These are just some error quotes so i can change them really quickly instead of doing the same quote for each error in every file '''
+    # Response for if someone tries to ping everyone upon bot interaction.
     everyone_tag = "I'm not getting everyone's attention."
 
-    ''' These are for the chat trigger'''
+    # TODO: Move this to database.
+    # This array will be filled with guild IDs on startup, with indexes that can be removed by disabling chat triggers or shutting down the bot.
     w_tog_on = []
 
-    ''' Doki Bot's ID'S '''
+    ''' Doki Bot's IDs'''
     if test_mode is True:
         natsuki_id = 531555963908653076
         monika_id = 531556928732528670 

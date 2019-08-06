@@ -24,9 +24,6 @@ class CommandError(commands.Cog):
 
         elif isinstance(error, commands.CommandNotFound):
             return
- 
-        elif isinstance(error, checks.blank):
-            return
 
         elif isinstance(error, commands.MissingPermissions):
             await ctx.send("Whoa there, Dummy! Only an admin can use that command!")
@@ -39,8 +36,6 @@ class CommandError(commands.Cog):
             await ctx.send(embed=e)
             print(chalk.yellow(f"Warning! The command '{ctx.command}' has just Errored!")) 
             print(chalk.red(f"Traceback: %s" % ''.join(tra)))
-
-
 
 
 def setup(bot):

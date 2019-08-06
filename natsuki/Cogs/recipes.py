@@ -1,13 +1,12 @@
 import discord, random, asyncio
 from discord.ext import commands as client
 from Cogs.config import conf
-#Imports
 
 
-class Recipe(client.Cog):#Class thing no touchy!!!111
+class Recipe(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot #Please no touchy thx
+         self.b = bot
 
     @client.command()
     async def recipe(self,ctx): 
@@ -19,5 +18,5 @@ class Recipe(client.Cog):#Class thing no touchy!!!111
         await ctx.send(random.choice(recipes))
 
 
-def setup(bot):#No no child keep your hands off or this will break and not load
+def setup(bot):
     bot.add_cog(Recipe(bot))

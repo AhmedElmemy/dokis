@@ -21,7 +21,6 @@ class Developer(client.Cog):
         await self.b.change_presence(status=discord.Status.dnd)
         await quit()
 
-
     @client.command()
     @checks.dev()
     async def restart(self,ctx):
@@ -31,16 +30,16 @@ class Developer(client.Cog):
         print(chalk.yellow("A developer has restarted the bot!"))
         print("\n")
         subprocess.call([sys.executable, "maid.py"])
-
+        await quit()
 
     @client.command()
     @checks.dev()
-    async def say(self, ctx, *, message): # A commmand that makes the bot say the given argument and deletes the message the user sent before
+    async def say(self, ctx, *, message):
         try:
-            await ctx.message.delete() # Deletes our message
-            await ctx.send(message) # sends our message
-        except discord.errors.Forbidden: # If we can't delete it then 
-            await ctx.send(message) # Just send the message
+            await ctx.message.delete()
+            await ctx.send(message)
+        except discord.errors.Forbidden:
+            await ctx.send(message)
 
     # Pulled from my bot (Axiro) for the sake of development. -iDroid
     @client.command()
@@ -51,7 +50,6 @@ class Developer(client.Cog):
             await ctx.send("Updating from Git failed.")
             return
         await ctx.send("Successfully updated from Git.")
-
 
 
 def setup(bot):

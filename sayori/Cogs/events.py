@@ -2,7 +2,8 @@ import discord, random, asyncio, chalk, re
 from discord.ext import commands as client
 from Cogs.config import conf
 
-class Event(client.Cog): #Silly man class leave alone thx
+
+class Event(client.Cog):
 
     def __init__(self, bot):
          self.b = bot
@@ -429,12 +430,6 @@ class Event(client.Cog): #Silly man class leave alone thx
             await message.channel.send("I-I do too! *hugs MC*")
     
         # -------------------------------------------------------Interactions with other Doki's!-------------------------------------------------------
-
-
-
-
-
-
 
         
 def setup(bot):

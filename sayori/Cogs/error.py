@@ -24,9 +24,6 @@ class CommandError(commands.Cog):
 
         elif isinstance(error, commands.CommandNotFound):
             return
- 
-        elif isinstance(error, checks.blank):
-            return
 
         elif isinstance(error, commands.MissingPermissions):
             await ctx.send("Sorry, but you don't have permission to use this command. You might need to ask the Club Leader to switch this.")
@@ -42,8 +39,6 @@ class CommandError(commands.Cog):
             await ctx.send(embed=e)
             print(chalk.yellow(f"Warning! The command '{ctx.command}' has just Errored!")) 
             print(chalk.red(f"Traceback: %s" % ''.join(tra)))
-
-
 
 
 def setup(bot):

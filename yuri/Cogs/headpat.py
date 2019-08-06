@@ -2,13 +2,12 @@ import discord, random, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
-#Imports
 
 
-class Headpat(client.Cog):#Class thing no touchy!!!111
+class Headpat(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot #Please no touchy thx
+         self.b = bot
 
     @client.command()
     @client.cooldown(1, 7, BucketType.user)
@@ -31,5 +30,6 @@ class Headpat(client.Cog):#Class thing no touchy!!!111
                 await asyncio.sleep(conf.type_speed)  
             await ctx.send(random.choice(headpat_list2))
 
-def setup(bot):#No no child keep your hands off or this will break and not load
+
+def setup(bot):
     bot.add_cog(Headpat(bot))

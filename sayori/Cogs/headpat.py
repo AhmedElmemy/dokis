@@ -4,10 +4,10 @@ from discord.ext.commands.cooldowns import BucketType
 from Cogs.config import conf
 
 
-class Headpat(client.Cog):#Class thing no touchy!!!111
+class Headpat(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot #Please no touchy thx
+         self.b = bot
 
     @client.command()
     @client.cooldown(1, 7, BucketType.user)
@@ -18,6 +18,5 @@ class Headpat(client.Cog):#Class thing no touchy!!!111
         await ctx.send(random.choice(headpat_list))
 
 
-
-def setup(bot):#No no child keep your hands off or this will break and not load
+def setup(bot):
     bot.add_cog(Headpat(bot))
