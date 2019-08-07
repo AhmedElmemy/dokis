@@ -5,12 +5,12 @@ class conf():
 
     config = json.loads(open("../config.json", "r").read())
     token = config["sayori_token"]
-    prefix1 = "s_"
-    prefix2 = "S_"
+    prefix1 = "t_"
+    prefix2 = "T_"
     name = "Sayori"
     cogd = "Cogs"
     type_speed = 2
-    playing_msg = [f"Type 's_help' for help!","Doki Doki Literature Club","with the crayons!","Katawa Shoujo","with Mr. Cow!","with a noose!"]
+    playing_msg = ["Type 's_help' for help!","Doki Doki Literature Club","with the crayons!","Katawa Shoujo","with Mr. Cow!","with a noose!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
     #         Tsumiki             IDroid              Cole                Illuminati
     test_mode = config["test_mode"]  # To enable this function, change this to True in config.json
@@ -23,20 +23,21 @@ class conf():
         version = "4.0B Dragonfruit" # Testing mode should be beta.
     #L|Launch    B|Beta
 
-    ''' Just wanted to clear out that these hex codes bellow are for embed colours so i don't have to keep changing them in every single fucking file '''
-    err = 0xC91313 # The Error Embed Colour
-    norm = 0x3eb0ff # The Normal or Yeah sure i did this command heres an embed color, Embed Colour
-    warn = 0xff42e2 # The Warning Embed Colour
-    suc = 0xff42e2 # The Success (i did a thing) Embed Colour
+    # These hex codes are for embed colors. The "norm" hex is different for each doki and MC.
+    err = 0xC91313 # The Error Embed Color
+    norm = 0x3eb0ff # The Normal Embed Color
+    warn = 0xff42e2 # The Warning Embed Color
+    suc = 0xff42e2 # The Success Embed Color
 
-    ''' These are just some error quotes so i can change them really quickly instead of doing the same quote for each error in every file '''
+    # Response for if someone tries to ping everyone upon bot interaction.
     everyone_tag = "We don't need to get everyone's attention!"
 
-    ''' These are for the chat trigger'''
+    # TODO: Move this to database.
+    # This array will be filled with guild IDs on startup, with indexes that can be removed by disabling chat triggers or shutting down the bot.
     w_tog_on = []
 
-    ''' Doki Bot's ID'S '''
-    if test_mode is True:
+    ''' Doki Bot's IDs '''
+    if not "false" in test_mode.lower():
         natsuki_id = 531555963908653076
         monika_id = 531556928732528670 
         sayori_id = 531554745337249792

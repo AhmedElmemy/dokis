@@ -40,7 +40,7 @@ class conf():
     w_tog_on = []
 
     ''' Doki Bot's IDs'''
-    if test_mode is True:
+    if not "false" in test_mode.lower():
         natsuki_id = 531555963908653076
         monika_id = 531556928732528670 
         sayori_id = 531554745337249792
