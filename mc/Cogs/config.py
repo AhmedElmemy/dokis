@@ -13,9 +13,9 @@ class conf():
     playing_msg = [f"Type 'mc_help' for help!","Doki Doki Literature Club","with a shoe lace","aloof","in a dark void"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
     #         Tsumiki             IDroid              Cole                Illuminati
-    test_mode = False  # To enable this function, change this to True.
+    test_mode = config["test_mode"]  # To enable this function, change this to True in config.json
 
-    if test_mode is False:
+    if "false" in test_mode.lower():
         sharding = True
         version = "4.0L Dragonfruit"
     else:

@@ -3,5 +3,6 @@
   "yuri_token": "token",
   "natsuki_token": "token",
   "monika_token": "token",
-  "mc_token": "token"
+  "mc_token": "token",
+  "test_mode": "false"
 }
