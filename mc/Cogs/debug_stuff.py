@@ -50,7 +50,8 @@ MC: {conf.mc_id}
 
         await ctx.send(embed=e)
         await ctx.send(embed=e2)
-        await ctx.send(embed=e3)
+        if conf.sharding is True:
+            await ctx.send(embed=e3)
         await ctx.send(embed=e4)
 
 
