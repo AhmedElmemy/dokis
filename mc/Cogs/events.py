@@ -37,6 +37,8 @@ class Event(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self,message):
+        if message.author.bot or message.guild.id not in conf.w_tog_on:
+            return
         # ------------------------------------------------------------------------------------------------------------------------------------------------
         trigger_words = ["rope", "poetry"]
 
@@ -44,23 +46,17 @@ class Event(client.Cog):
         mct =  message.content.lower().split(" ") # (MCT | Message Contents)
         for word in mct:
             if message.content.lower() in trigger_words:
-                if message.author.bot:
-                    pass
-
+                async with message.channel.typing():
+                    await asyncio.sleep(conf.type_speed)
+                if word == trigger_words[0]:
+                    await message.channel.send("NO!")
                 else:
-                    if message.guild.id in conf.w_tog_on:
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        if word == trigger_words[0]:
-                            await message.channel.send("NO!")
-                        else:
-                            await message.channel.send("Oh... you make poems too, cool.")
-                        return
-                    else:
-                        pass
+                    await message.channel.send("Oh... you make poems too, cool.")
+                return
                         
             # -------------------------------------------------------Tagging-------------------------------------------------------
         if re.search(f"^<@!?{self.b.user.id}>", message.content):
+
             hello_list = ["Hi, I guess.", "Hello..."]
             afternoon_list = ["Is it a good afternoon?", "What? It's the afternoon?", "Ehhhhhh..."]
 
@@ -242,7 +238,7 @@ class Event(client.Cog):
                 await asyncio.sleep(conf.type_speed)
             await message.channel.send("Uhhhhhhh...")
 
-        if "of course he loves me! and I will make sure **nobody** takes him away from me!" in message.content.lower() and message.author.id == conf.yuri_id:
+        if "of course he loves me! and i will make sure **nobody** takes him away from me!" in message.content.lower() and message.author.id == conf.yuri_id:
             async with message.channel.typing():
                 await asyncio.sleep(conf.type_speed)
             await message.channel.send("You're going to stab them to death if they try, aren't you?")

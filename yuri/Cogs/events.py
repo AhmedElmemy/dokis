@@ -37,6 +37,8 @@ class Event(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self,message):
+        if message.author.bot or message.guild.id not in conf.w_tog_on:
+            return
         # ------------------------------------------------------------------------------------------------------------------------------------------------
         cut_words = ["cut", "cutting", "cuts", "stab", "stabbing", "stabs"]
         cut_list = ["Uuu...!", "D-Did you have to say that word...?", "I-I'm sorry, I-I really don't like that word...", ":confounded:"]
@@ -52,102 +54,85 @@ class Event(client.Cog):
         # ------------------------------------------------------------------------------------------------------------------------------------------------
         mct = message.content.lower().split(" ") # (MCT | Meesage Contents) 
         for word in mct:
-            if word.lower() in cut_words: #Cut trigger words
-                if message.guild.id in conf.w_tog_on:
-                    if message.author.bot:
-                        return
-                        
-                    if message.guild is None:#PM'S
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(cut_list)) 
-                        return 
+            if word.lower() in cut_words:
+                if message.guild is None: # PM's
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(cut_list)) 
+                    return 
 
-                    elif message.guild.id not in conf.act2: #This is incase the guild that this command was used in is set to act1
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(cut_list)) 
-                        return 
+                elif message.guild.id not in conf.act2: # Guild in Act 1
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(cut_list)) 
+                    return 
 
-                    elif message.guild.id in conf.act2:  #This is incase the guild that this command was used in is set to act2
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(cut_list_act_2)) 
-                        return
-
-                    else:
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(cut_list)) 
-                        return 
+                elif message.guild.id in conf.act2:  # Guild in Act 2
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(cut_list_act_2)) 
+                    return
 
                 else:
-                    pass
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(cut_list)) 
+                    return
 
             if word.lower() in knife_words:
-                if message.guild.id in conf.w_tog_on:
-                    if message.author.bot:
-                        return
-
-                    if message.guild is None:#PM'S
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(knife_list)) 
-                        return
+                if message.guild is None: # PM's
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(knife_list)) 
+                    return
             
-                    elif message.guild.id not in conf.act2: #This is incase the guild that this command was used in is set to act1
+                elif message.guild.id not in conf.act2: # Guild in Act 1
                         async with message.channel.typing():
                             await asyncio.sleep(conf.type_speed)
                         await message.channel.send(random.choice(knife_list)) 
                         return
 
-                    elif message.guild.id in conf.act2: #This is incase the guild that this command was used in is set to act2
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(knife_list_act2)) 
-                        return
+                elif message.guild.id in conf.act2: # Guild in Act 2
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(knife_list_act2)) 
+                    return
 
-                    else: #Just incase the user is in a PM
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(knife_list)) 
-                        return
+                else: # Just incase the user is in a PM
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(knife_list)) 
+                    return
 
-                else:
-                    pass
+            if word.lower() in pen_words:
+                if message.guild is None:# PM's
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(pen_list)) 
+                    return
 
-            if word.lower() in pen_words: #Pen word trigger words
-                if message.guild.id in conf.w_tog_on:
-                    if message.author.bot:
-                        return
+                elif message.guild.id not in conf.act2: # Guild in Act 1
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(pen_list)) 
+                    return
 
-                    if message.guild is None:#PM'S
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(pen_list)) 
-                        return
-
-                    elif message.guild.id not in conf.act2: #This is incase the guild that this command was used in is set to act1
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(pen_list)) 
-                        return
-
-                    elif message.guild.id in conf.act2: #This is incase the guild that this command was used in is set to act2
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(pen_list_act2)) 
-                        return
+                elif message.guild.id in conf.act2: # Guild in Act 2
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(pen_list_act2)) 
+                    return
                     
-                    else:
-                        async with message.channel.typing():
-                            await asyncio.sleep(conf.type_speed)
-                        await message.channel.send(random.choice(pen_list)) 
-                        return
+                else:
+                    async with message.channel.typing():
+                        await asyncio.sleep(conf.type_speed)
+                    await message.channel.send(random.choice(pen_list)) 
+                    return
 
             # -------------------------------------------------------Tagging-------------------------------------------------------
         if re.search(f"^<@!?{self.b.user.id}>", message.content): #re check if string *starts with* mentioning me (even if someone nicknames me or not)
-
+            async with message.channel.typing():
+                await asyncio.sleep(conf.type_speed)
             #-------------------- Act 1 --------------------
             if message.guild.id not in conf.act2:
                 hi_list = ["H-Hello there.", "...h-hi...", "O-Oh, are you talking to me? S-Sorry, I'm not used to that..."]
@@ -188,115 +173,70 @@ class Event(client.Cog):
 
             #-------------------- Responding --------------------
             content = re.sub(f'^<@!?{self.b.user.id}>', "", message.content).strip()
-            if content == "": #checks if message content is empty excluding my mention
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+            if content == "": # Checks if message is empty (excluding mention)
                 await message.channel.send(random.choice(resempty))
 
-            elif re.search(r"(^|[^A-Za-z])(hi|hello|hey)([^A-Za-z]|$)", message.content, re.IGNORECASE): # checks if hi or hey (with space between them or on edge of string) or hello is in message
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search(r"(^|[^A-Za-z])(hi|hello|hey)([^A-Za-z]|$)", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(hi_list))
 
-            elif re.search("((^|\s)ily(\s|$)|(^|\s)i\s.*love.*you)", message.content, re.IGNORECASE): #checks if ily (with space between them or on edge of string) or i love you (with any possible characters between them and a must space after i) is in message
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("((^|\s)ily(\s|$)|(^|\s)i\s.*love.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(love_list))
                 
-            elif re.search("good.*night", message.content, re.IGNORECASE): #checks if good night (doesn't require anything between, but allows) is in text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("good.*night", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(night_list))
                 
-            elif re.search("good.*morning", message.content, re.IGNORECASE): #checks if good morning (doesn't require anything between, but allows) is in text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("good.*morning", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(morning_list))
                 
-            elif re.search("good.*afternoon", message.content, re.IGNORECASE): #checks if good afternoon (doesn't require anything between, but allows) is in text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("good.*afternoon", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(afternoon_list))
                 
-            elif re.search("you.*are.*(pretty|beautiful|adorable|cute)", message.content, re.IGNORECASE): #checks if you are (whatever is in the parenthesis) is in text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("you.*are.*(pretty|beautiful|adorable|cute)", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(compliment_list))
 
-            elif re.search("((^|\s)i\s.*apologi(s|z)e|sorry)", message.content, re.IGNORECASE): #check if sorry or i apologise/apologize is in text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("((^|\s)i\s.*apologi(s|z)e|sorry)", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(apology_list))
                 
-            elif re.search("(i'm.*sick|puke|not.*feeling.*(good|great))", message.content, re.IGNORECASE): #checks if i'm sick, puke or not feeling good/great is in text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(i'm.*sick|puke|not.*feeling.*(good|great))", message.content, re.IGNORECASE):
                 await message.channel.send(random.choice(sickness_list))
                 
-            elif re.search("(monika|sayori|natsuki).*best.*(girl|doki)", message.clean_content, re.IGNORECASE): #checks if user calls one of the other dokis best girl in the text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(monika|sayori|natsuki).*best.*(girl|doki)", message.clean_content, re.IGNORECASE):
                 await message.channel.send(random.choice(otherbestgirl_list))
 
-            elif re.search("(you('re|.*are)|^is|yuri).*best.*(girl|doki)", message.clean_content, re.IGNORECASE): #checks if user calls me best girl in the text
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(you('re|.*are)|^is|yuri).*best.*(girl|doki)", message.clean_content, re.IGNORECASE):
                 await message.channel.send(random.choice(bestgirl_list))
 
-            elif re.search("(sayori.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.sayori_id}>.*loves.*you)", message.content, re.IGNORECASE): 
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(sayori.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.sayori_id}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(sayorilove)
-                return
 
-            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.monika_id}>.*loves.*you)", message.content, re.IGNORECASE): 
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.monika_id}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(monikalove)
-                return
 
-            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.natsuki_id}>.*loves.*you)", message.content, re.IGNORECASE): 
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.natsuki_id}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(natsukilove)
-                return
 
-            elif re.search("(mc.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.mc_id}>.*loves.*you)", message.content, re.IGNORECASE): 
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
+            elif re.search("(mc.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.mc_id}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(mclove)
-                return
 
             elif re.search(r".+\s.*loves.*you", message.content, re.IGNORECASE):
                 regex = re.search(r"(.+)\s.*loves.*you", content).group(1)
                 act1_mentioned_love_reactions = [f"O-Oh, {regex} does...? W-Well, that's nice to hear.", f"Uuu... I-I'm flattered, {regex}...", "R-Really? {regex} loves me...?", "W-Well... I-I think I love {regex}, too...!"]
                 act2_mentioned_love_reactions = [f"Ohoho, well I think it's safe to say that {regex} doesn't love me as much as you do.", f"{regex} does, do they? Well, I beg to differ.", "I'm sorry, {regex}, but I already have a lover, and they belong to me and me alone.", "Well, I suppose I could touch myself to {regex}, as well..."]
 
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
                 if message.guild.id in conf.act2:
                     await message.channel.send(random.choice(act2_mentioned_love_reactions))
                 else:
                     await message.channel.send(random.choice(act1_mentioned_love_reactions))
-                return
 
             elif "test" in message.content.lower():
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
                 if message.guild.id in conf.act2:
                     await message.channel.send("I'm working fine, I promise you! Can we just read already??")
                 else:
                     await message.channel.send("I-I believe I'm working properly... Oh, I hope I am...")
             
             else:
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
                 await message.channel.send(resbad)             
-                # -------------------------------------------------------Tagging-------------------------------------------------------
-
-
-
-
+        # -------------------------------------------------------Tagging-------------------------------------------------------
 
 
 
@@ -312,7 +252,6 @@ class Event(client.Cog):
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send("Oh! Well, that was certainly unexpected!")
 
-        
         if f"hugs <@{self.b.user.id}>" in message.content.lower() and message.author.id == conf.monika_id     or     f"hugs @!<{self.b.user.id}>" in message.content.lower() and message.author.id == conf.monika_id: #Monika
             if message.guild.id in conf.act2:
                 async with message.channel.typing():
@@ -324,7 +263,6 @@ class Event(client.Cog):
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send("O-Oh! Well, uh, thank you, Monika.")
                         
-
         if f"hugs <@{self.b.user.id}>" in message.content.lower() and message.author.id == conf.sayori_id     or     f"hugs @!<{self.b.user.id}>" in message.content.lower() and message.author.id == conf.sayori_id: #Sayori
             if message.guild.id in conf.act2:
                 async with message.channel.typing():
@@ -335,7 +273,6 @@ class Event(client.Cog):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send("H-Hey! Don't hug so hard, Sayori!")
-
 
         if "geez, yuri! don't make it all awkward!" in message.content.lower() and message.author.id == conf.natsuki_id:
             async with message.channel.typing():
@@ -353,18 +290,15 @@ class Event(client.Cog):
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send("Oh... I see...")
                     
-
         if "what the hell?? yuri, why would you say something so mean??" in message.content.lower() and message.author.id == conf.natsuki_id:  
             async with message.channel.typing():
                 await asyncio.sleep(conf.type_speed)
             await message.channel.send("Because it's the fucking truth, you little bitch!!")
             
-
         if "aww thank you, yuri!" in message.content.lower() and message.author.id == conf.sayori_id:
             async with message.channel.typing():
                 await asyncio.sleep(conf.type_speed)
             await message.channel.send("Y-You're welcome, Sayori.")
-
 
         if "well, of course she does! yuri loves everybody!" in message.content.lower() and message.author.id == conf.sayori_id:   
             if message.guild.id in conf.act2:
@@ -377,7 +311,6 @@ class Event(client.Cog):
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send("S-Sayori! You didn't have to say it like that...")
                 
-
         if "yuri, it's me! sayori! your friend and vice president of the literature club!" in message.content.lower() and message.author.id == conf.sayori_id:
             async with message.channel.typing():
                 await asyncio.sleep(conf.type_speed)
@@ -388,7 +321,6 @@ class Event(client.Cog):
                 await asyncio.sleep(conf.type_speed)
             await message.channel.send("Sorry, but I don't know you. Please get your messy, stupid self away from me.")
             
-
         if "well, that's a pleasant surprise! and i understand why she doesn't have the courage to say it to me directly." in message.content.lower() and message.author.id == conf.monika_id:   
             if message.guild.id in conf.act2:
                 async with message.channel.typing():
