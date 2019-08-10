@@ -1,7 +1,5 @@
-﻿import discord, json, platform, os, subprocess, Cogs.checks, chalk, sys, traceback, asyncio, textwrap
-from discord.ext import commands as client
-from os import listdir
-from os.path import isfile, join
+﻿import discord, os, subprocess, Cogs.checks, chalk, asyncio
+import discord.ext.commands as client
 from Cogs.config import conf
 
 checks = Cogs.checks
@@ -11,7 +9,6 @@ class Developer(client.Cog):
 
     def __init__(self, bot):
          self.b = bot
-         self._last_result = None
 
     @client.command()
     @checks.dev()
@@ -27,7 +24,7 @@ class Developer(client.Cog):
         embed = discord.Embed(title = "Give me a moment to restart...",color = conf.norm)
         await ctx.send(embed=embed)
         await self.b.change_presence(status=discord.Status.idle)
-        print(chalk.yellow("A developer has restarted the bot!"))
+        print("A developer has restarted the bot!")
         print("\n")
         subprocess.call([sys.executable, "maid.py"])
         await quit()

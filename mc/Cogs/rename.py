@@ -1,5 +1,5 @@
 import discord, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
