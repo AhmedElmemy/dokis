@@ -4,11 +4,9 @@ import json
 class conf():
 
     config = json.loads(open("../config.json", "r").read())
-    token = config["monika_token"]
     prefix1 = "m_"
     prefix2 = "M_"
     name = "Monika"
-    cogd = "Cogs"
     type_speed = 2
     playing_msg = ["Type 'm_help' for help!","Doki Doki Literature Club","the piano!", "Super Smash Bros Ultimate.", "If My Heart Had Wings", "with you!", "Just Monika.", "from your computer!", "your reality!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
@@ -27,14 +25,11 @@ class conf():
     err = 0xC91313 # The Error Embed Color
     norm = 0x12ba01 # The Normal Embed Color
     warn = 0xff42e2 # The Warning Embed Color
-    suc = 0xff42e2 # The Success Color
-
-    # Response for if someone tries to ping everyone upon bot interaction.
-    everyone_tag = "There's no way I'm letting you ping everyone."
+    suc = 0xff42e2 # The Success Embed Color
 
     # TODO: Move this to database.
-    # This array will be filled with guild IDs on startup, with indexes that can be removed by disabling chat triggers or shutting down the bot.
-    w_tog_on = []
+    # This array will be filled with guild IDs of those that disable chat triggers. The array is cleared on shutdown.
+    w_tog_off = []
 
     ''' Doki Bot's IDs'''
     if not "false" in test_mode.lower():

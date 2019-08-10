@@ -10,10 +10,10 @@ class Tickle(client.Cog):
 
     @client.command()
     @client.cooldown(1, 7, BucketType.user)
-    async def tickle(self,ctx): 
+    async def tickle(self,ctx):
         laughs = ["Ahahahaha!!", "Hehehehehe!", "N-Now, hold on! Th-This isn't right! Ahahaha!!", "Ehehehehehehe!!!"]
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)  
+            await asyncio.sleep(conf.type_speed)
         await ctx.send(random.choice(laughs))
 
 

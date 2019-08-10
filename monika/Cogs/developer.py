@@ -1,5 +1,5 @@
-import discord, json, platform, os, subprocess, Cogs.checks, chalk, sys, traceback, asyncio 
-from discord.ext import commands as client
+import discord, os, subprocess, Cogs.checks, asyncio 
+import discord.ext.commands as client
 from Cogs.config import conf
 
 checks = Cogs.checks

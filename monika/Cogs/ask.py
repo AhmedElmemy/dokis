@@ -1,5 +1,5 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -7,6 +7,7 @@ class Ask(client.Cog):
 
     def __init__(self, bot):
          self.b = bot
+
     @client.command()
     async def ask(self,ctx, arg1=None):
         if arg1 is None:
@@ -16,6 +17,7 @@ class Ask(client.Cog):
             async with ctx.message.channel.typing():
                 await asyncio.sleep(conf.type_speed)
             await ctx.send(random.choice(answer_list))
+
 
 def setup(bot):
     bot.add_cog(Ask(bot))
