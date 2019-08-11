@@ -7,7 +7,6 @@ class conf():
     prefix1 = "s_"
     prefix2 = "S_"
     name = "Sayori"
-    cogd = "Cogs"
     type_speed = 2
     playing_msg = ["Type 's_help' for help!","Doki Doki Literature Club","with the crayons!","Katawa Shoujo","with Mr. Cow!","with a noose!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
