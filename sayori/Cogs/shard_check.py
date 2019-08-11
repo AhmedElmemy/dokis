@@ -1,5 +1,5 @@
-import discord, random, asyncio
-from discord.ext import commands as client
+import discord, asyncio
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -9,6 +9,7 @@ class Ask(client.Cog):
          self.b = bot
 
     @client.command()
+    @client.guild_only()
     async def shard(self,ctx):
         if conf.sharding is False:
             await ctx.send("Sorry but this command only works while Sharding!")

@@ -11,10 +11,10 @@ class Swears(client.Cog):
 
     @client.command()
     @client.cooldown(1, 7, BucketType.user)
-    async def swear(self,ctx): 
-        swear_list = ["HECK!", "DARN IT!", "POOP!", "CRUD!", "FRICK!", "SON OF A BISCUIT!", "MOTHERTRUCKER!"]        
+    async def swear(self,ctx):
+        swear_list = ["HECK!", "DARN IT!", "POOP!", "CRUD!", "FRICK!", "SON OF A BISCUIT!", "MOTHERTRUCKER!"]
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)  
+            await asyncio.sleep(conf.type_speed)
         await ctx.send(random.choice(swear_list))
 
 
