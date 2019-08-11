@@ -23,12 +23,12 @@ class Triggers(client.Cog):
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.dad_list))
 
-            if ("cupcake" or "cupcakes") in word.lower():
+            elif ("cupcake" or "cupcakes") in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.cupcake_list))
 
-            if "manga" in word.lower():
+            elif "manga" in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.manga_list))

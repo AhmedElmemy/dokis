@@ -14,7 +14,7 @@ class Interactions(client.Cog):
             return
 
         # Hugs
-        if (f"hugs <@{self.b.user.id}>" or f"hugs @!<{self.b.user.id}>") in message.content.lower():
+        if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
             async with message.content.typing():
                 await asyncio.sleep(conf.type_speed)
             if message.author.id == conf.mc_id:

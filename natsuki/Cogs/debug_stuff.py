@@ -27,13 +27,12 @@ Python Version: {pv}
 ''',color=0x36393f)
         e.set_author(name=f"Hiya {ctx.author.name}!", icon_url=ctx.author.avatar_url)
 
-        if not ctx.guild.id in conf.w_tog_on:
+        if ctx.guild.id in conf.w_tog_off:
             e2 = discord.Embed(title=f'''Does Guild use chat triggers: No
 ''',color=0x36393f)
         else:
             e2 = discord.Embed(title=f'''Does Guild use chat triggers: Yes
-''',color=0x36393f)        
-
+''',color=0x36393f)
         if conf.sharding is True:
             e3 = discord.Embed(title=f'''Number of Shards: {len(self.b.shards)}
 Total Guilds: {len(self.b.guilds)}

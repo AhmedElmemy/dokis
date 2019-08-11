@@ -10,16 +10,14 @@ class toggle(client.Cog):
 
     @client.command()
     @client.has_permissions(manage_messages=True)
+    @client.guild_only()
     async def toggle(self,ctx):
-        try:
-            if ctx.guild.id not in conf.w_tog_off: # Disable chat triggers.
-                conf.w_tog_off.insert(0, ctx.guild.id)
-                await ctx.send("I won't react to triggers in chat anymore.")
-            else: # Enables chat triggers.
-                conf.w_tog_off.remove(ctx.guild.id)
-                await ctx.send("Fine, I'll start reacting to triggers again.")
-        except: # Do not run in private messages.
-            await ctx.send("This command doesn't work in PMs.")
+        if ctx.guild.id not in conf.w_tog_off: # Disable chat triggers.
+            conf.w_tog_off.insert(0, ctx.guild.id)
+            await ctx.send("I won't react to triggers in chat anymore.")
+        else: # Enables chat triggers.
+            conf.w_tog_off.remove(ctx.guild.id)
+            await ctx.send("Fine, I'll start reacting to triggers again.")
 
 
 def setup(bot):

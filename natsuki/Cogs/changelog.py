@@ -1,4 +1,4 @@
-import discord, random, asyncio
+import discord, asyncio
 import discord.ext.commands as client
 from Cogs.config import conf
 

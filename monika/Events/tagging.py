@@ -29,11 +29,11 @@ class Tagging(client.Cog):
         if message.author.bot:
             return
 
-        if re.search(f"^<@!?{self.b.user.id}>", message.content):
+        if re.search(f"^<@!?{self.bot.user.id}>", message.content):
             async with message.channel.typing():
                 await asyncio.sleep(conf.type_speed)
 
-            content = re.sub(f'^<@!?{self.b.user.id}>', "", message.content).strip()
+            content = re.sub(f'^<@!?{self.bot.user.id}>', "", message.content).strip()
 
             if content == "": # Checks if message is empty (excluding mention)
                 await message.channel.send(random.choice(self.respempty))
