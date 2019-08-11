@@ -4,15 +4,13 @@ import json
 class conf():
 
     config = json.loads(open("../config.json", "r").read())
-    token = config["natsuki_token"]
     prefix1 = "n_"
     prefix2 = "N_"
     name = "Natsuki"
-    cogd = "Cogs"
     type_speed = 2
     playing_msg = ["Type 'n_help' for help!","Doki Doki Literature Club","Don't Starve","Cooking Mama", "some anime through your computer!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
-    #         Tsumik              IDroid              Cole                Illuminati
+    #         Tsumiki             IDroid              Cole                Illuminati
     test_mode = config["test_mode"]  # To enable this function, change this to True in config.json
 
     if "false" in test_mode.lower():
@@ -33,8 +31,8 @@ class conf():
     everyone_tag = "Ha! Nice try trying to ping everyone, you baka!!!"
 
     # TODO: Move this to database.
-    # This array will be filled with guild IDs on startup, with indexes that can be removed by disabling chat triggers or shutting down the bot.
-    w_tog_on = []
+    # This array will be filled with guild IDs of those that disable chat triggers. The array is cleared on shutdown.
+    w_tog_off = []
     
     ''' Doki Bot's IDs'''
     if not "false" in test_mode.lower():

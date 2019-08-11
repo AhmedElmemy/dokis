@@ -10,6 +10,7 @@ class Motivate(client.Cog):
          self.b = bot
 
     @client.command()
+    @client.cooldown(1, 7, BucketType.user)
     async def motivate(self,ctx, *, message=None): 
         member = ctx.message.content.split(" ")[0]
         if message is None: #No argument? Just assume it's you
@@ -19,7 +20,7 @@ class Motivate(client.Cog):
                 await asyncio.sleep(conf.type_speed)  
             await ctx.send(random.choice(motivate_list))
 
-        elif message == '@everyone' or message == '@here':
+        elif message == ('@everyone' or '@here'):
             await ctx.send(conf.everyone_tag)
             
         elif message == 'y_act' or message == 'y_act1' or message == 'y_act2':

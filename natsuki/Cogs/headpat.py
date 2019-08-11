@@ -18,6 +18,5 @@ class Headpat(client.Cog):
         await ctx.send(random.choice(headpat_list))
 
 
-
 def setup(bot):
     bot.add_cog(Headpat(bot))

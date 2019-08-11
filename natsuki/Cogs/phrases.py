@@ -1,5 +1,5 @@
-import discord, random, asyncio
-from discord.ext import commands as client
+import discord, asyncio
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -8,8 +8,8 @@ class Phrases(client.Cog):
     def __init__(self, bot):
          self.b = bot 
 
-    @client.command()
-    async def phrases(self,ctx): 
+    @client.command(aliases=['commands'])
+    async def phrases(self,ctx):
         e = discord.Embed(title="Phrases!", description="Here are all the words/phrases you can use when you @mention me! Though it's ***VERY*** important that the @mention is at the very beginning!", color=conf.norm)
         e.add_field(name="Hi, Hello", value="I-It's not like you have to greet me or anything!", inline=True)
         e.add_field(name="Test", value="I'm usually working fine, you dummy!", inline=False)
