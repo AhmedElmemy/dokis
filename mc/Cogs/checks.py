@@ -1,4 +1,4 @@
-import discord, asyncio, json, discord.utils
+import discord, asyncio, discord.utils
 from discord.ext import commands
 from Cogs.config import conf
 

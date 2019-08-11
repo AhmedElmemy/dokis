@@ -18,7 +18,7 @@ class Hug(client.Cog):
                 await asyncio.sleep(conf.type_speed)  
             await ctx.send(random.choice(hug_list))
 
-        elif message == '@everyone' or message == '@here':
+        elif message.lower() == ('@everyone' or '@here'):
             await ctx.send("No.")
             
         elif message == 'f<@{self.b.user.id}>':

@@ -1,4 +1,4 @@
-import discord, os, subprocess, Cogs.checks, asyncio 
+import discord, subprocess, sys, Cogs.checks, asyncio 
 import discord.ext.commands as client
 from Cogs.config import conf
 
@@ -33,7 +33,7 @@ class Developer(client.Cog):
         embed = discord.Embed(title = "Give me a moment to restart...",color = conf.norm)
         await ctx.send(embed=embed)
         await self.b.change_presence(status=discord.Status.idle)
-        print(chalk.yellow("A developer has restarted the bot!"))
+        print("A developer has restarted the bot!")
         print("\n")
         subprocess.call([sys.executable, "maid.py"])
         await quit()

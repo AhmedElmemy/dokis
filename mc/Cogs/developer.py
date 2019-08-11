@@ -1,4 +1,4 @@
-﻿import discord, os, subprocess, Cogs.checks, chalk, asyncio
+﻿import discord, os, subprocess, Cogs.checks, asyncio
 import discord.ext.commands as client
 from Cogs.config import conf
 
