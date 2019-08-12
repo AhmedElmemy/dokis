@@ -1,5 +1,5 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -9,7 +9,7 @@ class Invite(client.Cog):
          self.b = bot 
 
     @client.command()
-    async def invite(self,ctx): 
+    async def invite(self,ctx):
         if ctx.guild is None:
             e3 = discord.Embed(title="My invite link!", description="Uuu, I don't know about this. W-What if they don't like me?", color=conf.norm)
             e3.add_field(name="O-Oh, well... Here goes nothing...", value="[Click here to invite me!](https://discordbots.org/bot/436350586670153730)", inline=True)

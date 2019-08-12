@@ -1,5 +1,5 @@
-import discord, random, Cogs.checks, asyncio, sys
-from discord.ext import commands as client
+import discord, Cogs.checks, asyncio, sys
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -27,7 +27,7 @@ Python Version: {pv}
 ''',color=0x36393f)
         e.set_author(name=f"Hiya {ctx.author.name}!", icon_url=ctx.author.avatar_url)
 
-        if not ctx.guild.id in conf.w_tog_on:
+        if ctx.guild.id in conf.w_tog_off:
             e2 = discord.Embed(title=f'''Does Guild use chat triggers: No
 ''',color=0x36393f)
         else:

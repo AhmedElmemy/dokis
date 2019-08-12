@@ -7,84 +7,57 @@ from Cogs.config import conf
 class Hug(client.Cog):
 
     def __init__(self, bot):
-         self.b = bot 
+         self.b = bot
+         self.hug_list = ["Y-you want me to hug you? Well, o-okay, I guess I can do that for you... *hugs %s*", "Just let me know if this is too much for you... *hugs %s*", "*hugs %s* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
+         self.selfhug_list = ["What? O-Okay, I suppose... *hugs myself*", "*hugs myself* Oh, dear, this must look so embarassing! Uuuu...!"]
+         self.act2_hug_list = ["*hugs %s* Ahaha... I could hug you forever...!", "Oh, you have no idea how long I've been waiting for you to say that!! *hugs %s*", "*hugs %s* Mmm... You smell so wonderful! I wish I could smell this smell forever!", "Uhuhu... You can even grab my ass while we hug if you wanted. I don't mind ;) *hugs %s*", f"*hugs %s* Oh, you're pressing hard against my chest. I must say, I really, really love it!"]
 
     @client.command()
     @client.cooldown(1, 7, BucketType.user)
     async def hug(self,ctx, *, message=None):
-        # TODO: Find a way to condense these two if statements into one
+        if message == ("@everyone" or "@here"):
+            await ctx.send("I'm not getting everyone's attention.")
+            return
 
-        if ctx.guild is None: #Runs in direct messages.
+        if ctx.guild is None: # Runs in direct messages. Always do Act 1.
+            async with ctx.message.channel.typing():
+                await asyncio.sleep(conf.type_speed)
             if message is None: #No argument? Just assume it's you
                 user = ctx.author
-                hug_list5 = [f"Y-you want me to hug you? Well, o-okay, I guess I can do that for you... *hugs <@{user.id}>*", f"Just let me know if this is too much for you... *hugs <@{user.id}>*", f"*hugs <@{user.id}>* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
-                await ctx.send(random.choice(hug_list5))
-
-            elif message == '@everyone' or message == '@here':
-                await ctx.send(conf.everyone_tag)
+                await ctx.send(random.choice(self.hug_list) % (f"<@{user.id}>"))
             
-            elif message == f'<@{self.b.user.id}>': # Oh no it's me!
-                hug_list6 = ["What? O-Okay, I suppose... *hugs myself*", "*hugs myself* Oh, dear, this must look so embarassing! Uuuu...!"]
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
-                await ctx.send(random.choice(hug_list6))
+            elif message.lower() == (f'<@{self.b.user.id}>' or "yuri" or "yourself"): # Oh no it's me!
+                await ctx.send(random.choice(self.selfhug_list))
 
             else: # Argument, okay let's spit whatever the user just said
-                hug_list7 = [f"Y-you want me to hug them? Well, o-okay, I guess I can do that for you... *hugs {message}*", f"Just let me know if this is too much for you... *hugs {message}*", f"*hugs {message}* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
                 async with ctx.message.channel.typing():
                     await asyncio.sleep(conf.type_speed)  
-                await ctx.send(random.choice(hug_list7))
+                await ctx.send(random.choice(self.hug_list) % (message))
 
-        if ctx.guild.id not in conf.act2: # Runs if in a guild and in Act 1
+        else: # Runs in guilds.
+            async with ctx.message.channel.typing():
+                await asyncio.sleep(conf.type_speed)
             if message is None: #No argument? Just assume it's you
                 user = ctx.author
-                hug_list1 = [f"Y-you want me to hug you? Well, o-okay, I guess I can do that for you... *hugs <@{user.id}>*", f"Just let me know if this is too much for you... *hugs <@{user.id}>*", f"*hugs <@{user.id}>* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
-                await ctx.send(random.choice(hug_list1))
-
-            elif message == '@everyone' or message == '@here':
-                await ctx.send(conf.everyone_tag)
+                if ctx.guild.id not in conf.act2:
+                    await ctx.send(random.choice(self.hug_list) % (f"<@{user.id}>"))
+                else:
+                   await ctx.send(random.choice(self.act2_hug_list) % (f"<@{user.id}>"))
             
-            elif message == f'<@{self.b.user.id}>': # Oh no it's me!
-                hug_list2 = ["What? O-Okay, I suppose... *hugs myself*", "*hugs myself* Oh, dear, this must look so embarassing! Uuuu...!"]
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
-                await ctx.send(random.choice(hug_list2))
+            elif message.lower() == (f'<@{self.b.user.id}>' or "yuri" or "yourself"): # Oh no it's me!
+                if ctx.guild.id not in conf.act2:
+                    await ctx.send(random.choice(self.selfhug_list))
+                else:
+                    await ctx.send("But I don't ***want*** to hug myself! I want to hug ***YOU!!!***")
 
-            else: # Argument, okay let's spit whatever the user just said
-                hug_list3 = [f"Y-you want me to hug them? Well, o-okay, I guess I can do that for you... *hugs {message}*", f"Just let me know if this is too much for you... *hugs {message}*", f"*hugs {message}* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
-                await ctx.send(random.choice(hug_list3))
-
-        if ctx.guild.id in conf.act2: # Runs if in a guild and in Act 2
-            if message is None: #No argument? Just assume it's you
-                user = ctx.author
-                hug_list4 = [f"*hugs <@{user.id}>* Ahaha... I could hug you forever...!", f"Oh, you have no idea how long I've been waiting for you to say that!! *hugs <@{user.id}>*", f"*hugs <@{user.id}>* Mmm... You smell so wonderful! I wish I could smell this smell forever!", f"Uhuhu... You can even grab my ass while we hug if you wanted. I don't mind ;) *hugs <@{user.id}>*", f"*hugs <@{user.id}>* Oh, you're pressing hard against my chest. I must say, I really, really love it!"]
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
-                await ctx.send(random.choice(hug_list4))
-
-            elif message == '@everyone' or message == '@here':
-                await ctx.send(conf.everyone_tag)
-            
-            elif message == f'<@{self.b.user.id}>' or message == "Yuri" or message == "yuri" or message == "yourself": # Oh noes it's me!
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
-                await ctx.send("But I don't ***want*** to hug myself! I want to hug ***YOU!!!***")
-
-            elif message == f'<@{conf.mc_id}>' or message == "MC":
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+            elif ctx.guild.id in conf.act2 and message.lower() == (f"<@{conf.mc_id}>" or "mc"):
                 await ctx.send(f"Hey <@{conf.mc_id}>, get your sexy body over here and fuck me~")
 
-            else: # Argument, okay let's just make Yuri not do that cause she's in Act 2
-                async with ctx.message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)  
-                await ctx.send("No. I refuse to hug anyone other than you.")
+            else: # Argument, okay let's spit whatever the user just said
+                if ctx.guild.id not in conf.act2:
+                    await ctx.send(random.choice(self.hug_list) % (message))
+                else:
+                    await ctx.send("No. I refuse to hug anyone other than you.")
 
         
 def setup(bot):

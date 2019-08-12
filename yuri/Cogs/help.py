@@ -1,5 +1,5 @@
 import discord, random, asyncio
-from discord.ext import commands as client
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -11,7 +11,7 @@ class Help(client.Cog):
     @client.command()
     async def help(self,ctx): 
         if ctx.guild is None:
-            e0 = discord.Embed(title="H-Hello. I'm Yuri.", description="My .chr file was converted by Cole, so now I can join your Discord server. I-I hope I don't become an inconvenience to you... A-Anyway, here are the things I can do:", color=0x8524c8)
+            e0 = discord.Embed(title="H-Hello. I'm Yuri.", description="My .chr file was converted by Cole, so now I can join your Discord server. I-I hope I don't become an inconvenience to you... A-Anyway, here are the things I can do:", color=conf.norm)
             e0.add_field(name="y_act1/y_act2", value="Y-You can use this to toggle my Act 1 and Act 2 personalities, b-but this can only be done by a server administrator... Uu, could you please keep me on Act 1, though? I-I'm not proud of how I behave in Act 2 mode...", inline=True)
             e0.add_field(name="y_act", value="You can use this to check what act i'm on!", inline=True)
             e0.add_field(name="y_ask", value="You can ask me a yes-or-no question if you'd like, but please don't be disappointed if I don't know the answer or even give an incorrect one...", inline=True)
@@ -28,7 +28,7 @@ class Help(client.Cog):
     
         
         elif ctx.guild.id not in conf.act2: # Act 1 help
-            e1 = discord.Embed(title="H-Hello. I'm Yuri.", description="My .chr file was converted by Cole, so now I can join your Discord server. I-I hope I don't become an inconvenience to you... A-Anyway, here are the things I can do:", color=0x8524c8)
+            e1 = discord.Embed(title="H-Hello. I'm Yuri.", description="My .chr file was converted by Cole, so now I can join your Discord server. I-I hope I don't become an inconvenience to you... A-Anyway, here are the things I can do:", color=conf.norm)
             e1.add_field(name="y_act1/y_act2", value="Y-You can use this to toggle my Act 1 and Act 2 personalities, b-but this can only be done by a server administrator... Uu, could you please keep me on Act 1, though? I-I'm not proud of how I behave in Act 2 mode...", inline=True)
             e1.add_field(name="y_act", value="You can use this to check what act i'm on!", inline=True)
             e1.add_field(name="y_ask", value="You can ask me a yes-or-no question if you'd like, but please don't be disappointed if I don't know the answer or even give an incorrect one...", inline=True)
@@ -45,7 +45,7 @@ class Help(client.Cog):
 
 
         elif ctx.guild.id in conf.act2: # Act 2 help
-            e2 = discord.Embed(title="Hello. I'm Yuri.", description="My .chr file was converted by Cole, so now I can join your Discord server. I just know that being with you will be the best thing to ever happen to both of us, ahaha! Here are all the things we can do together:", color=0x8524c8)
+            e2 = discord.Embed(title="Hello. I'm Yuri.", description="My .chr file was converted by Cole, so now I can join your Discord server. I just know that being with you will be the best thing to ever happen to both of us, ahaha! Here are all the things we can do together:", color=conf.norm)
             e2.add_field(name="y_act1/y_act2", value="You can use this to toggle between my Act 1 personality and my Act 2 one. This can only be used by server administrators. Honestly, I love you either way, so I don't care which one I'm on!", inline=True)
             e2.add_field(name="y_act", value="You can use this to check what act i'm on!", inline=True)
             e2.add_field(name="y_ask", value="You can ask me a yes-or-no question if you'd like, and I'll try my hardest to answer it for you!", inline=True)

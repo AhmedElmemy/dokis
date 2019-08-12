@@ -1,5 +1,5 @@
-import discord, random, asyncio
-from discord.ext import commands as client
+import discord, asyncio
+import discord.ext.commands as client
 from Cogs.config import conf
 
 
@@ -10,15 +10,14 @@ class toggle(client.Cog):
 
     @client.command()
     @client.has_permissions(manage_messages=True)
+    @client.guild_only()
     async def toggle(self,ctx):
-        if ctx.guild.id in conf.w_tog_on: # Disable chat triggers.
-            conf.w_tog_on.remove(ctx.guild.id)
+        if ctx.guild.id not in conf.w_tog_off: # Disable chat triggers.
+            conf.w_tog_off.insert(0, ctx.guild.id)
             await ctx.send("O-Okay, I won't react to chat triggers...")
-        elif ctx.guild.id not in conf.w_tog_on: # Enables chat triggers.
-            conf.w_tog_on.insert(0, ctx.guild.id)
+        else: # Enables chat triggers.
+            conf.w_tog_off.remove(ctx.guild.id)
             await ctx.send("O-Okay, I'll react to chat triggers...")
-        else: # Do not run in private messages.
-            await ctx.send("Hey so an error happened, i'll just leave a code for you to report! ERROR: 17: Returned ELSE, is this in a PM?")
     
 
 def setup(bot):

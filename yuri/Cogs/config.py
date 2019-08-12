@@ -4,11 +4,9 @@ import json
 class conf():
 
     config = json.loads(open("../config.json", "r").read())
-    token = config["yuri_token"]
     prefix1 = "y_"
     prefix2 = "Y_"
     name = "Yuri"
-    cogd = "Cogs"
     type_speed = 2
     playing_msg = ["Type 'y_help' for help!", "Doki Doki Literature Club", "with knifes!", "Everlasting Summer", "Yandere Simulator", "with your pen!"]
     admins = [480580173431832577, 310496481435975693, 270057011251642368, 320286336433258506]
@@ -32,12 +30,9 @@ class conf():
     # This array will be empty on startup, but will fill up with the IDs of guilds that enable Act 2 for Yuri. It is cleared on shutdown.
     act2 = []
 
-    # Response for if someone tries to ping everyone upon bot interaction.
-    everyone_tag = "I'm not getting everyone's attention."
-
     # TODO: Move this to database.
-    # This array will be filled with guild IDs on startup, with indexes that can be removed by disabling chat triggers or shutting down the bot.
-    w_tog_on = []
+    # This array will be filled with guild IDs of those that disable chat triggers. The array is cleared on shutdown.
+    w_tog_off = []
 
     ''' Doki Bot's IDs'''
     if not "false" in test_mode.lower():
