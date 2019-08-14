@@ -11,10 +11,10 @@ class Act_check(client.Cog):
     @client.command()
     @client.guild_only()
     async def act(self,ctx):
-            if ctx.guild.id not in conf.act2:
-                await ctx.send("I'm on Act 1.")
-            else:
-                await ctx.send("I'm on Act 2.")
+        if ctx.guild.id not in conf.act2:
+            await ctx.send("I'm on Act 1.")
+        else:
+            await ctx.send("I'm on Act 2.")
 
 
 def setup(bot):

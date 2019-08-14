@@ -12,9 +12,9 @@ class InteractionsActOne(client.Cog):
     async def on_message(self, message):
         if not (conf.mc_id or conf.monika_id or conf.natsuki_id or conf.sayori_id):
             return
-        if ctx.guild is None:
+        if message.guild is None:
             return
-        if ctx.guild.id in conf.act2:
+        if message.guild.id in conf.act2:
             return
 
         if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
