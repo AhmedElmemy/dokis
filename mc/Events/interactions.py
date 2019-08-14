@@ -13,13 +13,21 @@ class Interactions(client.Cog):
         if not (conf.monika_id or conf.natsuki_id or conf.sayori_id or conf.yuri_id):
             return
 
+        # Hugs
+        if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
+            async with message.content.typing():
+                await asyncio.sleep(conf.type_speed)
+            if message.author.id == conf.monika_id:
+                await message.channel.send("*muffled screaming*")
+            elif message.author.id == conf.natsuki_id:
+                await message.channel.send("Augh!")
+            elif message.author.id == conf.sayori_id:
+                await message.channel.send("Finnnnnnne, Sayori.")
+            elif message.author.id == conf.yuri_id:
+                await message.channel.send("No, it's fine...")
+
         # Interactions with Monika
         if message.author.id == conf.monika_id:
-            if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
-                await message.channel.send("*muffled screaming*")
-
             if f"aww, you're the best hugger, <@{self.bot.user.id}>" in message.content.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
@@ -42,11 +50,6 @@ class Interactions(client.Cog):
 
         # Interactions with Natsuki
         if message.author.id == conf.natsuki_id:
-            if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
-                await message.channel.send("Augh!")
-
             if f"ah! you scared me, <@{self.bot.user.id}>" in message.content.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
@@ -69,11 +72,6 @@ class Interactions(client.Cog):
 
         # Interactions with Sayori
         elif message.author.id == conf.sayori_id:
-            if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
-                await message.channel.send("Finnnnnnne, Sayori.")
-
             if f"aww you're such a sweetheart, <@{self.bot.user.id}>" in message.content.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
@@ -98,11 +96,6 @@ class Interactions(client.Cog):
         elif message.author.id == conf.yuri_id:
 
             # Act 1
-            if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
-                async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
-                await message.channel.send("No, it's fine...")
-
             if "augh!" in message.content.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)

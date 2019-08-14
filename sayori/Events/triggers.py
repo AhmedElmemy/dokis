@@ -17,7 +17,9 @@ class Triggers(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot or message.guild.id in conf.w_tog_off or message.content.upper().startswith(f"<@{self.bot.user.id}>"):
+        if message.author.bot:
+            return
+        if message.guild.id in conf.w_tog_off or message.content.startswith(f"<@{self.bot.user.id}>"):
             return
 
         mct = message.content.lower().split(" ") # (MCT | Message Contents)
@@ -26,26 +28,31 @@ class Triggers(client.Cog):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.name_list))
+                return
 
             elif ("breakfast" or "b2") in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send("I want breakfast.")
+                return
 
             elif re.search("(goodmorning|good.*morning)", message.content, re.IGNORECASE):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.goodmorning_list))
+                return
 
             elif re.search("(goodafternoon|good.*afternoon)", message.content, re.IGNORECASE):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.goodafternoon_list))
+                return
 
             elif re.search("(goodnight|gn|good.*night)", message.content, re.IGNORECASE):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.goodnight_list))
+                return
 
             elif re.search("((h(a|u)ng).*ed)", message.content, re.IGNORECASE):
                 async with message.channel.typing():
@@ -54,11 +61,13 @@ class Triggers(client.Cog):
                     await message.channel.send(random.choice(self.suicide_list))
                 else:
                     await message.channel.send(random.choice(self.hang_list))
+                return
 
             elif "meanie" in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.meanie_list))
+                return
 
             elif "kill" in word.lower():
                 async with message.channel.typing():
@@ -67,6 +76,7 @@ class Triggers(client.Cog):
                     await message.channel.send(random.choice(self.suicide_list))
                 else:
                     await message.channel.send("Can we change the topic to something more wholesome please?")
+                return
 
 
 def setup(bot):

@@ -13,8 +13,13 @@ class Triggers(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot or message.guild.id in conf.w_tog_off:
+        if message.author.bot:
             return
+        try:
+            if message.guild.id in conf.w_tog_off:
+                return
+        except:
+            pass
 
         mct = message.content.lower().split(" ") # (MCT | Message Contents)
         for word in mct:
@@ -22,16 +27,19 @@ class Triggers(client.Cog):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.dad_list))
+                return
 
             elif ("cupcake" or "cupcakes") in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.cupcake_list))
+                return
 
             elif "manga" in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.manga_list))
+                return
 
 
 def setup(bot):

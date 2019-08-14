@@ -62,7 +62,6 @@ class Interactions(client.Cog):
 
         # Interactions with Yuri
         if message.author.id == conf.yuri.id:
-            # Act 1
 
             # Act 2
             if "get your dirty, selfish hands off of me before i kill you and take your spot as president!!" in message.content.lower():

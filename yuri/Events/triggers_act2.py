@@ -27,16 +27,19 @@ class TriggersActTwo(client.Cog):
                 async with message.content.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.cut_list))
+                return
 
             elif re.search("(kni(fe|ves))", message.content, re.IGNORECASE):
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.knife_list))
+                return
 
             elif "pen" or "pens" in word.lower():
                 async with message.channel.typing():
                     await asyncio.sleep(conf.type_speed)
                 await message.channel.send(random.choice(self.pen_list))
+                return
 
 
 def setup(bot):

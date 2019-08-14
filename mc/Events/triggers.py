@@ -11,8 +11,13 @@ class Triggers(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot or message.guild.id in conf.w_tog_off:
+        if message.author.bot:
             return
+        try:
+            if message.guild.id in conf.w_tog_off:
+                return
+        except:
+            pass
 
         mct = message.content.lower().split(" ") # Message Contents
         for word in mct:
