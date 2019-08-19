@@ -1,8 +1,24 @@
 {
-  "sayori_token": "token",
-  "yuri_token": "token",
-  "natsuki_token": "token",
-  "monika_token": "token",
-  "mc_token": "token",
-  "test_mode": "false"
+  "sayori": {
+    "prefix": "s_",
+    "embed_color": "0x3eb0ff"
+  },
+  "natsuki": {
+    "prefix": "n_",
+    "embed_color": "0xff42e2"
+  },
+  "monika": {
+    "prefix": "m_",
+    "embed_color": "0x12ba01"
+  },
+  "yuri": {
+    "prefix": "y_",
+    "embed_color": "0x8524c8"
+  },
+  "mc": {
+    "prefix": "mc_",
+    "embed_color": "0xdb7915"
+  },
+  "version": "4.0 Dragonfruit",
+  "type_speed": "2"
 }
