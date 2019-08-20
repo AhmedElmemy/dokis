@@ -1,24 +1,43 @@
 {
   "sayori": {
     "prefix": "s_",
-    "embed_color": "0x3eb0ff"
+    "embed_color": "0x3eb0ff",
+    "public_id": "425696108455657472",
+    "test_id": "531554745337249792",
+    "playing": [ "Type 's_help' for help!", "Doki Doki Literature Club", "with the crayons!", "Katawa Shoujo", "with Mr. Cow!", "with a noose!" ]
   },
   "natsuki": {
     "prefix": "n_",
-    "embed_color": "0xff42e2"
+    "embed_color": "0xff42e2",
+    "public_id": "433834936450023424",
+    "test_id": "531555963908653076",
+    "playing": [ "Type 'n_help' for help!", "Doki Doki Literature Club", "Don't Starve", "Cooking Mama", "some anime through your computer!" ]
   },
   "monika": {
     "prefix": "m_",
-    "embed_color": "0x12ba01"
+    "embed_color": "0x12ba01",
+    "public_id": "436351740787294208",
+    "test_id": "531556928732528670",
+    "playing": [ "Type 'm_help' for help!", "Doki Doki Literature Club", "the piano!", "Super Smash Bros Ultimate.", "If My Heart Had Wings", "with you!", "Just Monika.", "from your computer!", "your reality!" ]
   },
   "yuri": {
     "prefix": "y_",
-    "embed_color": "0x8524c8"
+    "embed_color": "0x8524c8",
+    "public_id": "436350586670153730",
+    "test_id": "531556397746356224",
+    "playing": [ "Type 'y_help' for help!", "Doki Doki Literature Club", "with knives!", "Everlasting Summer", "Yandere Simulator", "with your pen!" ]
   },
   "mc": {
     "prefix": "mc_",
-    "embed_color": "0xdb7915"
+    "embed_color": "0xdb7915",
+    "public_id": "596407346176065552",
+    "test_id": "596409849131171870",
+    "playing": [ "Type 'mc_help' for help!", "Doki Doki Literature Club", "with a shoe lace", "aloof", "in a dark void" ]
   },
+  "admins": [ "480580173431832577", "310496481435975693", "270057011251642368", "320286336433258506" ],
   "version": "4.0 Dragonfruit",
-  "type_speed": "2"
+  "type_speed": "2",
+  "error_embed_color": "0xc91313",
+  "warn_embed_color": "0xff42e2",
+  "success_embed_color": "0xff42e2"
 }

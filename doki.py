@@ -1,8 +1,15 @@
 import asyncio, discord, importlib, json, os, random, re, rstr, sqlite3, sre_yield, sys, traceback
 from discord.ext import commands
 
-dokiName = sys.argv[1].lower()
-test_mode =  sys.argv[2] == '-test'
+try:
+    dokiName = sys.argv[1].lower()
+except:
+    print("Please specify a doki (Monika, Natsuki, Sayori, Yuri) or MC.")
+    quit()
+try:
+    test_mode = sys.argv[2] == '-test'
+except:
+    test_mode = False
 
 config = json.loads(open("config.json", "r").read())
 
@@ -14,17 +21,23 @@ class doki(commands.Bot if test_mode else commands.AutoShardedBot):
     
     def __init__(self):
         super().__init__(command_prefix=sre_yield.AllStrings(config[dokiName]["prefix"]), status=discord.Status.idle, activity=discord.Game(name="Starting Up..."))
-
+        self.doki = dokiName
+        self.test_mode = test_mode
+        self.config = config
+        
         # Load command cogs.
-        for file in os.listdir(f"{dokiName}/Cogs"):
+        for file in os.listdir(f"Cogs"):
             if file.endswith(".py"):
                 name = file[:-3]
-                try:
-                    self.load_extension(f"{dokiName}.Cogs.{name}")
-                    print(f"Loaded Cog: {name}")
-                except (discord.ClientException, ModuleNotFoundError):
-                    print('Failed to load Cog: {name}')
-                    print(traceback.format_exc())
+                if name == "config" or name == "checks":
+                    pass
+                else:
+                    try:
+                        self.load_extension(f"Cogs.{name}")
+                        print(f"Loaded Cog: {name}")
+                    except (discord.ClientException, ModuleNotFoundError):
+                        print('Failed to load Cog: {name}')
+                        print(traceback.format_exc())
 
         # Load event cogs.
         for file in os.listdir(f"{dokiName}/Events"):
@@ -63,7 +76,7 @@ class doki(commands.Bot if test_mode else commands.AutoShardedBot):
 try:
     print(f"Loading {dokiName}.chr")
     client = doki()
-    client.run(json.loads(open("tokens.json", "r").read())[dokiName] )
+    client.run(json.loads(open("tokens.json", "r").read())[dokiName])
 except Exception as error:
     print(f"Could not run {dokiName}.chr!")
-    print(error)
+    print(traceback.format_exc())
