@@ -1,9 +1,7 @@
 ﻿import discord, os, subprocess, Cogs.checks, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 checks = Cogs.checks
-Cogs = "Cogs"
 
 class Developer(client.Cog):
 
@@ -13,7 +11,7 @@ class Developer(client.Cog):
     @client.command()
     @checks.dev()
     async def shutdown(self,ctx):
-        embed = discord.Embed(title = "Closing this instance...",color = conf.norm)
+        embed = discord.Embed(title = "Closing this instance...",color = self.b.config[self.b.doki]['embed_color'])
         await ctx.send(embed=embed)
         await self.b.change_presence(status=discord.Status.dnd)
         await quit()
@@ -21,12 +19,15 @@ class Developer(client.Cog):
     @client.command()
     @checks.dev()
     async def restart(self,ctx):
-        embed = discord.Embed(title = "Give me a moment to restart...",color = conf.norm)
+        embed = discord.Embed(title = "Give me a moment to restart...",color = self.b.config[self.b.doki]['embed_color'])
         await ctx.send(embed=embed)
         await self.b.change_presence(status=discord.Status.idle)
         print("A developer has restarted the bot!")
         print("\n")
-        subprocess.call([sys.executable, "maid.py"])
+        if self.b.test_mode:
+            subprocess.call([sys.executable, f"doki.py {self.b.doki} -test"])
+        else:
+            subprocess.call([sys.executable, f"doki.py {self.b.doki}"])
         await quit()
 
     @client.command()
@@ -42,6 +43,8 @@ class Developer(client.Cog):
     @client.command()
     @checks.dev()
     async def pull(self, ctx):
+        if self.b.doki is not "monika":
+            return
         c = subprocess.call(('git', 'pull'))
         if c != 0:
             await ctx.send("Updating from Git failed.")
