@@ -9,7 +9,7 @@ class Debug(client.Cog):
          self.b = bot 
 
     @checks.dev()
-    @client.command(enabled=True)
+    @client.command()
     async def debug(self,ctx):
         e = discord.Embed(title=f"Debug information for {self.b.doki}", description=f"**Version: {self.b.config['version']} \n\
         **Username:** {self.b.user.name} \n\

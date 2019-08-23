@@ -21,6 +21,9 @@ class CommandError(commands.Cog):
         elif isinstance(error, commands.MissingPermissions):
             await ctx.send("You don't have permission to use this command.")
 
+        elif isinstance(error, commands.NoPrivateMessage):
+            await ctx.send("This command only works on servers.")
+
         else:
             tra = traceback.format_exception_only(type(error), error)
             e = discord.Embed(description="`Was this supposed to happen?` ```py\n%s\n``` \nLooks like you encountered an issue! If you want, you can report this by clicking [here!](https://forms.gle/hJ3KHVwKMFzfs5eq9) (It takes you to a form where you can explain the bug in detail.)" % ''.join(tra), file=sys.stderr, color=conf.err)

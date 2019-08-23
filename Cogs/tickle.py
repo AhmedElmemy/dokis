@@ -18,7 +18,7 @@ class Tickle(client.Cog):
         elif self.b.doki == "sayori":
             laughs = ["Hehehehehe!~", "Ahahahaha!!", "*giggles*", "**PFFFT AHAHAHAHAHAHHAHAHAHHAHA!!!!!**", "Ehehe!~", "WAHAHAHAHAHA!!!~"]
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)  
+            await asyncio.sleep(self.b.config['type_speed'])  
         await ctx.send(random.choice(laughs))
 
 

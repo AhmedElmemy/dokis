@@ -11,7 +11,7 @@ class Developer(client.Cog):
     @client.command()
     @checks.dev()
     async def shutdown(self,ctx):
-        embed = discord.Embed(title = "Closing this instance...",color = self.b.config[self.b.doki]['embed_color'])
+        embed = discord.Embed(title = "Closing this instance...",color=int(self.b.config[self.b.doki]["embed_color"], base=16))
         await ctx.send(embed=embed)
         await self.b.change_presence(status=discord.Status.dnd)
         await quit()
@@ -19,7 +19,7 @@ class Developer(client.Cog):
     @client.command()
     @checks.dev()
     async def restart(self,ctx):
-        embed = discord.Embed(title = "Give me a moment to restart...",color = self.b.config[self.b.doki]['embed_color'])
+        embed = discord.Embed(title = "Give me a moment to restart...",color=int(self.b.config[self.b.doki]["embed_color"], base=16))
         await ctx.send(embed=embed)
         await self.b.change_presence(status=discord.Status.idle)
         print("A developer has restarted the bot!")
