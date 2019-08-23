@@ -1,9 +1,8 @@
 import discord, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
-class Ask(client.Cog):
+class ShardCheck(client.Cog):
 
     def __init__(self, bot):
          self.b = bot 
@@ -18,4 +17,4 @@ class Ask(client.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Ask(bot))
+    bot.add_cog(ShardCheck(bot))
