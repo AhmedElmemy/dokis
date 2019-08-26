@@ -1,6 +1,5 @@
 import discord, random, asyncio, re
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class TaggingActTwo(client.Cog):
@@ -28,12 +27,12 @@ class TaggingActTwo(client.Cog):
     async def on_message(self, message):
         if message.author.bot or message.guild is None:
             return
-        if message.guild.id not in conf.act2:
+        if message.guild.id not in self.bot.act2:
             return
 
         if re.search(f"^<@!?{self.bot.user.id}>", message.content):
             async with message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.bot.config['type_speed'])
 
             content = re.sub(f'^<@!?{self.bot.user.id}>', "", message.content).strip()
 
@@ -84,15 +83,15 @@ class TaggingActTwo(client.Cog):
 
             elif re.search(r".+\s.*loves.*you", message.content, re.IGNORECASE):
                 regex = re.search(r"(.+)\s.*loves.*you", content).group(1)
-                mentioned_love_reactions = [f"O-Oh, {regex} does...? W-Well, that's nice to hear.", f"Uuu... I-I'm flattered, {regex}...", "R-Really? {regex} loves me...?", "W-Well... I-I think I love {regex}, too...!"]
+                mentioned_love_reactions = [f"Ohoho, well I think it's safe to say that {regex} doesn't love me as much as you do.", f"{regex} does, do they? Well, I beg to differ.", "I'm sorry, {regex}, but I already have a lover, and they belong to me and me alone.", "Well, I suppose I could touch myself to {regex}, as well..."]
 
-                await message.channel.send(random.choice(act1_mentioned_love_reactions))
+                await message.channel.send(random.choice(mentioned_love_reactions))
 
             elif "test" in message.content.lower():
                 await message.channel.send("I-I believe I'm working properly... Oh, I hope I am...")
             
             else:
-                await message.channel.send(resbad)  
+                await message.channel.send(self.resbad)  
 
 
 def setup(bot):

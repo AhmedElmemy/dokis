@@ -1,6 +1,5 @@
 import discord, random, asyncio, re
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Tagging(client.Cog):
@@ -32,7 +31,7 @@ class Tagging(client.Cog):
 
         if re.search(f"^<@!?{self.bot.user.id}>", message.content):
             async with message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.bot.config['type_speed'])
 
             content = re.sub(f'^<@!?{self.bot.user.id}>', "", message.content).strip()
 
@@ -114,7 +113,7 @@ class Tagging(client.Cog):
             elif "test" in message.content.lower():
                 await message.channel.send("Testing, testing! 1-2-1-2 testing!")
             else:
-                await message.channel.send(random.choice(resbad))
+                await message.channel.send(random.choice(self.resbad))
 
 
 def setup(bot):

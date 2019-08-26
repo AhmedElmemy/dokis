@@ -1,6 +1,5 @@
 ﻿import discord, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Triggers(client.Cog):
@@ -14,7 +13,7 @@ class Triggers(client.Cog):
         if message.author.bot:
             return
         try:
-            if message.guild.id in conf.w_tog_off:
+            if message.guild.id in self.bot.w_tog_off:
                 return
         except:
             pass
@@ -23,7 +22,7 @@ class Triggers(client.Cog):
         for word in mct:
             if message.content.lower() in self.trigger_words:
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 if word == self.trigger_words[0]:
                     await message.channel.send("NO!")
                 else:

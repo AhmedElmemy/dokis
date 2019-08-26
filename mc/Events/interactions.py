@@ -1,6 +1,5 @@
 ﻿import discord, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Interactions(client.Cog):
@@ -10,130 +9,132 @@ class Interactions(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self, message):
-        if not (conf.monika_id or conf.natsuki_id or conf.sayori_id or conf.yuri_id):
+        if message.author.id == (self.bot.config['monika']['test_id' if self.bot.test_mode else 'public_id'] or self.bot.config['natsuki']['test_id' if self.bot.test_mode else 'public_id'] or self.bot.config['sayori']['test_id' if self.bot.test_mode else 'public_id'] or self.bot.config['yuri']['test_id' if self.bot.test_mode else 'public_id']):
+            pass
+        else:
             return
 
         # Hugs
         if (f"hugs <@{self.bot.user.id}>" or f"hugs @!<{self.bot.user.id}>") in message.content.lower():
             async with message.content.typing():
-                await asyncio.sleep(conf.type_speed)
-            if message.author.id == conf.monika_id:
+                await asyncio.sleep(self.bot.config['type_speed'])
+            if message.author.id == self.bot.config['monika']['test_id' if self.bot.test_mode else 'public_id']:
                 await message.channel.send("*muffled screaming*")
-            elif message.author.id == conf.natsuki_id:
+            elif message.author.id == self.bot.config['natsuki']['test_id' if self.bot.test_mode else 'public_id']:
                 await message.channel.send("Augh!")
-            elif message.author.id == conf.sayori_id:
+            elif message.author.id == self.bot.config['sayori']['test_id' if self.bot.test_mode else 'public_id']:
                 await message.channel.send("Finnnnnnne, Sayori.")
-            elif message.author.id == conf.yuri_id:
+            elif message.author.id == self.bot.config['yuri']['test_id' if self.bot.test_mode else 'public_id']:
                 await message.channel.send("No, it's fine...")
 
         # Interactions with Monika
-        if message.author.id == conf.monika_id:
+        if message.author.id == self.bot.config['monika']['test_id' if self.bot.test_mode else 'public_id']:
             if f"aww, you're the best hugger, <@{self.bot.user.id}>" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("No I'm not...")
 
             if f"yes, <@{self.bot.user.id}>?" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("I need to tell you something.")
 
             if "hmm?" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("I love you, Monika.")
 
             if "he does? well, that's nice to hear. ~~i'm still not letting anyone else take him from me, though.~~" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("~~Of course you won't let anyone take me from you. You'll just delete them if they try.~~")
 
         # Interactions with Natsuki
-        if message.author.id == conf.natsuki_id:
+        if message.author.id == self.bot.config['natsuki']['test_id' if self.bot.test_mode else 'public_id']:
             if f"ah! you scared me, <@{self.bot.user.id}>" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Sorry, I'm a dumbass.")
 
             if "what do you want, dummy?" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("I-I love you, Natsuki...")
 
             if "well, i-i do too..." in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("*hugs Natsuki*")
 
             if "ha! i'm sure he does! i-i'll believe it when he tells me that himself!" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("I'm not surprised she would say that, given how much of a tsundere she is.")
 
         # Interactions with Sayori
-        elif message.author.id == conf.sayori_id:
+        elif message.author.id == self.bot.config['sayori']['test_id' if self.bot.test_mode else 'public_id']:
             if f"aww you're such a sweetheart, <@{self.bot.user.id}>" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("You will always be my closest friend, Sayori.")
 
             if f"yes, <@{self.bot.user.id}>?" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("I-I love you, Sayori.")
 
             if "i-i do too! *hugs mc*" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("*hugs back*")
 
             if "yay! my best friend loves me!!!" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Uhhhhhhh...")
 
         # Interactions with Yuri
-        elif message.author.id == conf.yuri_id:
+        elif message.author.id == self.bot.config['yuri']['test_id' if self.bot.test_mode else 'public_id']:
 
             # Act 1
             if "augh!" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Sorry...")
 
             if "*tackle hugs mc*" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("*hugs back*")
 
             # Act 2
             if f"hey <@{self.bot.user.id}>, get your sexy body over here and fuck me~" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Fuck no, get away from me, Yuri.")
 
             if "then i'll stab you and crawl in your skin." in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Yeah, fuck no.")
                 await asyncio.sleep(1)
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("y_act1")
 
             if f"that's right <@{self.bot.user.id}>, let me feel your pulsating cock on my pussy." in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Oh hell no...")
 
             if f"i love you too, you sexy <@{self.bot.user.id}>! now fuck me!!!" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("Oh hell no!")
 
             if "of course he loves me! and i will make sure **nobody** takes him away from me!" in message.content.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send("You're going to stab them to death if they try, aren't you?")
 
 

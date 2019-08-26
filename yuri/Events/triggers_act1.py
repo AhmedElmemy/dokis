@@ -1,6 +1,5 @@
 ﻿import discord, random, asyncio, re
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class TriggersActOne(client.Cog):
@@ -14,26 +13,26 @@ class TriggersActOne(client.Cog):
 
     @client.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot or message.guild.id in conf.w_tog_off:
+        if message.author.bot or message.guild.id in self.bot.w_tog_off:
             return
 
         mct = message.content.lower().split(" ") # (MCT | Message Contents)
         for word in mct:
             if word.lower() in self.cut_words:
                 async with message.content.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send(random.choice(self.cut_list))
                 return
 
             elif re.search("(kni(fe|ves))", message.content, re.IGNORECASE):
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send(random.choice(self.knife_list))
                 return
 
             elif "pen" or "pens" in word.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(conf.type_speed)
+                    await asyncio.sleep(self.bot.config['type_speed'])
                 await message.channel.send(random.choice(self.pen_list))
                 return
 
