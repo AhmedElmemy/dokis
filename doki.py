@@ -30,11 +30,11 @@ class doki(commands.Bot if test_mode else commands.AutoShardedBot):
         if dokiName == "yuri":
             self.act2 = []
         
-        # Load command cogs.
-        for file in os.listdir(f"Cogs"):
+        # Load universal command cogs.
+        for file in os.listdir("Cogs"):
             if file.endswith(".py"):
                 name = file[:-3]
-                if name == "config" or name == "checks":
+                if name == "checks":
                     pass
                 else:
                     try:
@@ -43,6 +43,17 @@ class doki(commands.Bot if test_mode else commands.AutoShardedBot):
                     except (discord.ClientException, ModuleNotFoundError):
                         print('Failed to load Cog: {name}')
                         print(traceback.format_exc())
+
+        # Load character-specific command cogs.
+        for file in os.listdir(f"{dokiName}/Cogs"):
+            if file.endswith(".py"):
+                name = file[:-3]
+                try:
+                    self.load_extension(f"{dokiName}.Cogs.{name}")
+                    print(f"Loaded Cog: {name}")
+                except (discord.ClientException, ModuleNotFoundError):
+                    print('Failed to load Cog: {name}')
+                    print(traceback.format_exc())
 
         # Load event cogs.
         for file in os.listdir(f"{dokiName}/Events"):
