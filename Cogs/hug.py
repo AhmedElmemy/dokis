@@ -27,7 +27,7 @@ class Hug(client.Cog):
                 else:
                     hug_list = [f"Y-you want me to hug you? Well, o-okay, I guess I can do that for you... *hugs <@{ctx.author.id}>*", f"Just let me know if this is too much for you... *hugs <@{ctx.author.id}>*", f"*hugs <@{ctx.author.id}>* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])  
+                await asyncio.sleep(int(self.b.config['type_speed']))  
             await ctx.send(random.choice(hug_list))
 
         elif message.lower() == ('@everyone' or '@here'):
@@ -60,7 +60,7 @@ class Hug(client.Cog):
                 else:
                     hug_list = ["What? O-Okay, I suppose... *hugs myself*", "*hugs myself* Oh, dear, this must look so embarassing! Uuuu...!"]
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(hug_list))
 
         else:
@@ -84,7 +84,7 @@ class Hug(client.Cog):
                 else:
                     hug_list = [f"Y-you want me to hug you? Well, o-okay, I guess I can do that for you... *hugs {message}*", f"Just let me know if this is too much for you... *hugs {message}*", f"*hugs {message}* Mmm... this feels nice... ***OH!*** I-I'm sorry, I didn't mean for that to sound weird!"]
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(hug_list))
 
 

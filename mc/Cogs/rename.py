@@ -14,7 +14,7 @@ class Rename(client.Cog):
             await ctx.send("You don't have the proper permissions to change my name.")
             return
         async with ctx.message.channel.typing():
-            await asyncio.sleep(self.bot.config['type_speed'])
+            await asyncio.sleep(int(self.bot.config['type_speed']))
         try:
             await ctx.message.author.guild.me.edit(nick=f"{name}")
             await ctx.send(f"Ok, guess {name} is my name now.")

@@ -15,7 +15,7 @@ class Debug(client.Cog):
         **Username:** {self.b.user.name} \n\
         **Prefix:** {self.b.config[self.b.doki]['prefix']} \n\
         **Testing Mode:** {self.b.test_mode} \n\
-        **Type Speed:** {self.b.config['type_speed']} \n\
+        **Type Speed:** {int(self.b.config['type_speed'])} \n\
         **Discord.py Version:** {discord.__version__} \n\
         **Python Version:** {'.'.join(map(str, sys.version_info[:3]))}",color=0x36393f)
         e.set_author(name=f"Hello, {ctx.author.name}!", icon_url=ctx.author.avatar_url)

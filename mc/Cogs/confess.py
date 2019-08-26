@@ -10,7 +10,7 @@ class Confess(client.Cog):
     @client.command()
     async def confess(self, ctx, *, arg=None):
         async with ctx.message.channel.typing():
-            await asyncio.sleep(self.bot.config['type_speed'])
+            await asyncio.sleep(int(self.bot.config['type_speed']))
         if arg is None:
             await ctx.send(f"*starts to blush* Ok, I'll admit it <@{ctx.author.id}>, I love you!")
         elif arg == f"<@{self.bot.config['sayori']['test_id' if self.bot.test_mode else 'public_id']}>":

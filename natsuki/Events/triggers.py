@@ -24,19 +24,19 @@ class Triggers(client.Cog):
         for word in mct:
             if ("daddy" or "papa" or "dad" or "father") in word.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.dad_list))
                 return
 
             elif ("cupcake" or "cupcakes") in word.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.cupcake_list))
                 return
 
             elif "manga" in word.lower():
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.manga_list))
                 return
 

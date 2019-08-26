@@ -35,7 +35,7 @@ class TaggingActOne(client.Cog):
 
         if re.search(f"^<@!?{self.bot.user.id}>", message.content):
             async with message.channel.typing():
-                await asyncio.sleep(self.bot.config['type_speed'])
+                await asyncio.sleep(int(self.bot.config['type_speed']))
 
             content = re.sub(f'^<@!?{self.bot.user.id}>', "", message.content).strip()
 
@@ -72,16 +72,16 @@ class TaggingActOne(client.Cog):
             elif re.search("(you('re|.*are)|^is|yuri).*best.*(girl|doki)", message.content, re.IGNORECASE):
                 await message.channel.send(self.bestgirl)
 
-            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.natsuki_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['natsuki']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.natsukilove)
 
-            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.monika_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['monika']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.monikalove)
 
-            elif re.search("(sayori.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.sayori_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(sayori.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['sayori']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.sayorilove)
 
-            elif re.search("(mc.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.mc_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(mc.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['mc']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.mclove)
 
             elif re.search(r".+\s.*loves.*you", message.content, re.IGNORECASE):

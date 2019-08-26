@@ -25,7 +25,7 @@ class Tickle(client.Cog):
             else:
                 laughs = ["Oh! Hehehe!", "P-Please! Stop it! Ehehe!", "Hey, that tickles! Hahaha!", "HAHAHAHAHAHA! *snort*", "H-Hey! That's my ticklish spot!! :laughing:"]
         async with ctx.message.channel.typing():
-            await asyncio.sleep(self.b.config['type_speed'])  
+            await asyncio.sleep(int(self.b.config['type_speed']))  
         await ctx.send(random.choice(laughs))
 
 

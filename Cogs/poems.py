@@ -12,7 +12,7 @@ class Poems(client.Cog):
         if self.b.doki == "mc":
             return
         async with ctx.message.channel.typing():
-            await asyncio.sleep(self.b.config['type_speed'])
+            await asyncio.sleep(int(self.b.config['type_speed']))
         e = discord.Embed(color=int(self.b.config[self.b.doki]["embed_color"], base=16))
         e.set_author(name="My Poems!", icon_url=self.b.user.avatar_url)
         if self.b.doki == "monika":
@@ -63,7 +63,7 @@ class Poems(client.Cog):
             if self.b.doki != "monika":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Hole in Wall (2)", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -89,7 +89,7 @@ Swallowing my fears, I brandish my pen.''')
             if self.b.doki != "monika":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Hole in Wall", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -116,7 +116,7 @@ And he, on the other side, was looking in.''')
             if self.b.doki != "monika":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Save me", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -149,7 +149,7 @@ Load me''')
             if self.b.doki != "monika":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="The lady who knows everything", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -201,7 +201,7 @@ And with a breath, she blows me back afloat, and I pick up a gust of wind.''')
             if self.b.doki != "monika":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Happy end", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -225,7 +225,7 @@ Not all good times must come to an end''')
             if self.b.doki != "natsuki":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Eagles Can Fly", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -247,7 +247,7 @@ But that's about it.''')
             if self.b.doki != "natsuki":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Amy likes spiders", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -293,7 +293,7 @@ And I'm gonna tell everyone.''')
             if self.b.doki != "natsuki":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="I'll be your beach", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -339,7 +339,7 @@ You'll learn to love yourself again.''')
             if self.b.doki != "natsuki":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Because you", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -380,7 +380,7 @@ Because you, because you, because you.''')
             if self.b.doki != "sayori":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Dear Sunshine", description="*by Sayori*", color=int(self.b.config["sayori"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -408,7 +408,7 @@ I want breakfast.''')
             if self.b.doki != "sayori":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             embed = discord.Embed(title="Bottles", description="*by Sayori*", color=int(self.b.config["sayori"]["embed_color"], base=16))
             await ctx.send(random.choice(poem_intros))
             await ctx.send(embed=embed)
@@ -460,7 +460,7 @@ Inside my head.''')
             if self.b.doki != "sayori":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="%", description="*by Sayori*", color=int(self.b.config["sayori"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -492,7 +492,7 @@ It just stops moving.''')
             if self.b.doki != "yuri":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             embed = discord.Embed(title="Ghost Under the Light (2)", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send(random.choice(poem_intros))
@@ -527,7 +527,7 @@ Ghosts are blue-green. My heart is amber.''')
             if self.b.doki != "yuri":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Ghost Under the Light", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -549,7 +549,7 @@ I flicker back.''')
             if self.b.doki != "yuri":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="The Raccoon", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
@@ -586,7 +586,7 @@ And I feed myself again.''')
             if self.b.doki != "yuri":
                 return
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send(random.choice(poem_intros))
             embed = discord.Embed(title="Beach", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)

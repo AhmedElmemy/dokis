@@ -22,7 +22,7 @@ class Triggers(client.Cog):
         for word in mct:
             if message.content.lower() in self.trigger_words:
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 if word == self.trigger_words[0]:
                     await message.channel.send("NO!")
                 else:

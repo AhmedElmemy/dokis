@@ -31,7 +31,7 @@ class Tagging(client.Cog):
 
         if re.search(f"^<@!?{self.bot.user.id}>", message.content):
             async with message.channel.typing():
-                await asyncio.sleep(self.bot.config['type_speed'])
+                await asyncio.sleep(int(self.bot.config['type_speed']))
 
             content = re.sub(f'^<@!?{self.bot.user.id}>', "", message.content).strip()
 
@@ -68,16 +68,16 @@ class Tagging(client.Cog):
             elif re.search("(you('re|.*are)|^is|yuri).*best.*(girl|doki)", message.content, re.IGNORECASE):
                 await message.channel.send(self.bestgirl)
 
-            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.natsuki_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(natsuki.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['natsuki']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.natsukilove)
 
-            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.monika_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(monika.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['monika']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.monikalove)
 
-            elif re.search("(yuri.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.yuri_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(yuri.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['yuri']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.yurilove)
 
-            elif re.search("(mc.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.mc_id}>.*loves.*you)", message.content, re.IGNORECASE):
+            elif re.search("(mc.*loves.*you)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['mc']['test_id' if self.bot.test_mode else 'public_id']}>.*loves.*you)", message.content, re.IGNORECASE):
                 await message.channel.send(self.mclove)
 
             elif re.search("cyka.*blyat", message.content, re.IGNORECASE):
@@ -92,16 +92,16 @@ class Tagging(client.Cog):
             elif "test" in message.content.lower():
                 await message.channel.send("I'm working just fine.")
 
-            elif re.search("(monika.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.monika_id}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE): 
+            elif re.search("(monika.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['monika']['test_id' if self.bot.test_mode else 'public_id']}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE): 
                 await message.channel.send("Monika isn't a meanie! And no, I don't feel obligated to say that for fear of her deleting me again...")
 
-            elif re.search("(natsuki.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.natsuki_id}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE): 
+            elif re.search("(natsuki.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['natsuki']['test_id' if self.bot.test_mode else 'public_id']}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE): 
                 await message.channel.send("Hey, she may be spunky, but she's not a meanie!")
 
-            elif re.search("(yuri.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.yuri_id}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE): 
+            elif re.search("(yuri.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['yuri']['test_id' if self.bot.test_mode else 'public_id']}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE): 
                 await message.channel.send("What?? Yuri is the last person who would ever be a meanie!")
 
-            elif re.search("(sayori.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{conf.sayori_id}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE):
+            elif re.search("(sayori.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE) or re.search(f"(<@!?{self.bot.config['sayori']['test_id' if self.bot.test_mode else 'public_id']}>.*(are|is being|is).*a.*meanie)", message.content, re.IGNORECASE):
                 await message.channel.send("Eh?? No, I'm not!!")
 
             elif re.search(r".+\s.*(are|is).*meanie", message.content, re.IGNORECASE):

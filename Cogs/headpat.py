@@ -10,7 +10,7 @@ class Headpat(client.Cog):
     @client.command()
     async def headpat(self,ctx):   
         async with ctx.message.channel.typing():
-            await asyncio.sleep(self.b.config['type_speed'])
+            await asyncio.sleep(int(self.b.config['type_speed']))
         if self.b.doki == "mc":
             await ctx.send("Stop it!")
             return

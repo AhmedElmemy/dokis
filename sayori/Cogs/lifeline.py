@@ -10,7 +10,7 @@ class Lifeline(client.Cog):
     @client.command()
     async def lifeline(self,ctx): 
         async with ctx.message.channel.typing():
-            await asyncio.sleep(self.b.config['type_speed'])  
+            await asyncio.sleep(int(self.b.config['type_speed']))  
         await ctx.send("Here, this is the National Suicide Prevention Lifeline. They'll be able to help you, I promise! 1-800-273-8255")
 
 

@@ -26,7 +26,7 @@ class Feed(client.Cog):
             
         elif arg1 == "🍪":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("I mean, it's not made by Natsuki but I'll eat it.")
             elif self.b.doki == "monika":
@@ -45,7 +45,7 @@ class Feed(client.Cog):
 
         elif arg1 == ("🍣" or  "🍱" or "🍛" or  "🍙" or  "🍚" or  "🍘" or  "🍜" or "🍢" or "🍡" or "🍥"):
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("I mean, it's from my homeland. *eats happily*")
             elif self.b.doki == "monika":
@@ -63,7 +63,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍕":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Yay, pizza!")
             elif self.b.doki == "monika":
@@ -81,7 +81,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍔":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Yay, I love hamburgers!")
             elif self.b.doki == "monika":
@@ -99,7 +99,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍧" or arg1 == "🍦" or arg1 == "🍨":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Burr, cold.")
             elif self.b.doki == "monika":
@@ -117,7 +117,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍺" or arg1 == "🍻" or arg1 == "🍷" or arg1 == "🍸" or arg1 == "🍹" or arg1 == "🍶":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("What the fuck? I'm not drinking alcohol!")
             elif self.b.doki == "monika":
@@ -135,7 +135,7 @@ class Feed(client.Cog):
 
         elif arg1 == ("☕" or "🍵"):
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Time to start the day...")
             elif self.b.doki == "monika":
@@ -153,7 +153,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍞" or arg1 == "🥖":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == ("mc" or "sayori"):
                 await ctx.send("I mean, I suppose I could survive off of plain bread...")
             elif self.b.doki == "monika":
@@ -169,7 +169,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🌶":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("***HOTHOTHOTHOTHOT!!!***")
             elif self.b.doki == "monika":
@@ -187,7 +187,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍳":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Ugh, breakfast foods, great.")
             elif self.b.doki == "monika":
@@ -205,7 +205,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🌮" or arg1 == "🌯":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Noche de taco maravilloso!")
             elif self.b.doki == "monika":
@@ -223,7 +223,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍰" or arg1 == "🍮" or arg1 == "🍬" or arg1 == "🍫" or arg1 == "🍩":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send(f"Something sweet? For me? Thanks, <@{ctx.author.id}>")
             elif self.b.doki == "monika":
@@ -244,13 +244,13 @@ class Feed(client.Cog):
 
         elif arg1 == "🍿":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             await ctx.send("*crunch crunch crunch*")
         #------------------- Popcorn -------------------
 
         elif arg1 == "🍼" or arg1 == "🍭":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("I-I'm not a baby...")
             elif self.b.doki == "monika":
@@ -268,7 +268,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🥚":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Don't I need to cook this first?")
             elif self.b.doki == "monika":
@@ -286,7 +286,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍴" or arg1 == "🍽" or arg1 == "🥄":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Well, what are we eating?")
             elif self.b.doki == "monika":
@@ -304,7 +304,7 @@ class Feed(client.Cog):
         
         elif arg1 == "🥛":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Milk? Thanks, I guess.")
             elif self.b.doki == "monika":
@@ -322,7 +322,7 @@ class Feed(client.Cog):
         
         elif arg1 == "🎂":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send(f"It's not my birthday, and even if it was, I don't want a cake <@{ctx.author.id}>")
             elif self.b.doki == "monika":
@@ -340,7 +340,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🔪" and self.b.doki == ("mc" or "yuri"):
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("I'm not Act 2 Yuri; feed that to her.")
             elif self.b.doki == "yuri":
@@ -359,7 +359,7 @@ class Feed(client.Cog):
 
         elif arg1 == "🍎" or arg1 == "🍏" or arg1 == "🍐" or arg1 == "🍊" or arg1 == "🍋" or arg1 == "🍌" or arg1 == "🍉" or arg1 == "🍇" or arg1 == "🍓" or arg1 == "🍈" or arg1 == "🍒" or arg1 == "🍑" or arg1 == "🍍" or arg1 == "🍅" or arg1 == "🍆" or arg1 == "🌽" or arg1 == "🍠" or arg1 == "🍯" or arg1 == "🍗" or arg1 == "🍖" or arg1 == "🍤" or arg1 == "🍟" or arg1 == "🌭" or arg1 == "🍝" or arg1 == "🥐" or arg1 == "🥑" or arg1 == "🥒" or arg1 == "🥓" or arg1 == "🥔" or arg1 == "🥕" or arg1 == "🥗" or arg1 == "🥘" or arg1 == "🥙" or arg1 == "🥜" or arg1 == "🥝" or arg1 == "🥞" or arg1 == "🧀":
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("Um, thanks? *eats the food*")
             elif self.b.doki == "monika":
@@ -382,7 +382,7 @@ class Feed(client.Cog):
 
         else:
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "mc":
                 await ctx.send("I don't think I can eat that.")
             elif self.b.doki == "monika":

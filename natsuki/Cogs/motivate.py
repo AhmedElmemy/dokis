@@ -16,7 +16,7 @@ class Motivate(client.Cog):
             user = ctx.author
             motivate_list = [f"I believe in you {user.name}, you stupid sack of shit!", "C'mon, dummy! You can do it!", "*grabs shoulders* You've got this! I know you do!", "I'll bake you as many cupcakes as you want!", "You better do good or I'll shatter your shins!", "C'mon! Don't be a lazy goofball like Sayori!", "You better not act as dense as MC!", "DO IT! Just DO IT!!!", "Don't let your dreams be dreams!"]
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])  
+                await asyncio.sleep(int(self.b.config['type_speed']))  
             await ctx.send(random.choice(motivate_list))
 
         elif message == ('@everyone' or '@here'):
@@ -24,13 +24,13 @@ class Motivate(client.Cog):
             
         elif message == 'y_act' or message == 'y_act1' or message == 'y_act2':
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])  
+                await asyncio.sleep(int(self.b.config['type_speed']))  
             await ctx.send("Nice try, Baka.")
 
         else: 
             motivate_list = [f"I believe in you {message}, you stupid sack of shit!", "C'mon, dummy! You can do it!", "*grabs shoulders* You've got this! I know you do!", "I'll bake you as many cupcakes as you want!", "You better do good or I'll shatter your shins!", "C'mon! Don't be a lazy goofball like Sayori!", "You better not act as dense as MC!", "DO IT! Just DO IT!!!", "Don't let your dreams be dreams!"]
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])  
+                await asyncio.sleep(int(self.b.config['type_speed']))  
             await ctx.send(random.choice(motivate_list))
 
 

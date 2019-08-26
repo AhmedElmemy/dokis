@@ -29,7 +29,7 @@ class Ask(client.Cog):
                     await ctx.send("Did you want to ask me something? S-sorry if i was bothering you! Uuu...")
         else:
             async with ctx.message.channel.typing():
-                await asyncio.sleep(self.b.config['type_speed'])
+                await asyncio.sleep(int(self.b.config['type_speed']))
             if self.b.doki == "sayori":
                 answer_list = ["Yes!", "No.", "Maybe.", "Possibly?", "Of course, silly!", "I'd say ask Monika, but she's busy being ~~a meanie~~ an amazing club president!", "I'd say ask Yuri, but she's a little shy at the moment.", "I'd say ask Natsuki, but she's busy baking some cookies for ~~me to steal~~ the club!", "You've got a better chance of having a happy ending in DDLC! Ehehe...~", "Maybe we should ask The Magic Conch, instead.", "As sure as I'm depressed!", "Not really.", "My Vice President Powers tell me yes!", "My Vice President Powers tell me no!", "My Vice President Powers tell me maybe!", "J-Just a little bit!"]
             elif self.b.doki == "natsuki":

@@ -29,49 +29,49 @@ class Triggers(client.Cog):
         for word in mct:
             if "piano" in word.lower(): # Piano trigger
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.piano_list))
                 return
 
             elif "cacophany" in word.lower(): # Cacophany trigger
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.cacophony_list))
                 return
 
             elif "code" in word.lower(): # Code trigger
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.code_list))
                 return
 
             elif "python" in word.lower(): # Python trigger
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.python_list))
                 return
 
             elif "reality" in word.lower(): # Reality trigger
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.reality_list))
                 return
 
             elif ("poem" or "poems") in word.lower(): # Poem triggers
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.poem_list))
                 return
 
             elif ("literature" or "book" or "books") in word.lower(): # Literature triggers
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.literature_list))
                 return
 
             elif "just monika" in message.content.lower(): # Just Monika
                 async with message.channel.typing():
-                    await asyncio.sleep(self.bot.config['type_speed'])
+                    await asyncio.sleep(int(self.bot.config['type_speed']))
                 await message.channel.send(random.choice(self.monika_list))
                 return
 
