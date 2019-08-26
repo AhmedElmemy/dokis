@@ -1,6 +1,5 @@
 import discord, random, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Poems(client.Cog):
@@ -11,8 +10,8 @@ class Poems(client.Cog):
     @client.command()
     async def poems(self,ctx):
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)
-        e = discord.Embed(color=conf.norm)
+            await asyncio.sleep(self.b.config['type_speed'])
+        e = discord.Embed(color=int(self.b.config["yuri"]["embed_color"], base=16))
         e.set_author(name="My Poems!", icon_url=self.b.user.avatar_url)
         e.add_field(value="Poem #1",name="Ghost under the light.")
         e.add_field(value="Poem #2",name="Ghost under the light 2.",inline=False)
@@ -24,14 +23,14 @@ class Poems(client.Cog):
         poem_intros = ["Oooo, Yuri did a great job with this one!", "I personally don't get what she's saying with this one, but I still like it!", "I kinda like this side of Yuri, if I'm being honest!"]
 
         if poem is None:
-            await ctx.send("This is not a poem that i made.")
+            await ctx.send("This is not a poem that I made.")
 
 #--------------------------------------------------------------
-        elif "gohst under the light" in poem.lower():
+        elif "ghost under the light" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Ghost Under the Light", description="*by Yuri*", color=0x8524c8)
+            embed = discord.Embed(title="Ghost Under the Light", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 The tendrills of my hair illuminate beneath the amber glow.
@@ -49,8 +48,8 @@ I flicker back.''')
 #--------------------------------------------------------------
         elif "ghost under the light 2" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
-            embed = discord.Embed(title="Ghost Under the Light (2)", description="*by Yuri*", color=0x8524c8)
+                await asyncio.sleep(self.b.config['type_speed'])
+            embed = discord.Embed(title="Ghost Under the Light (2)", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send(random.choice(poem_intros))
             await ctx.send('''
@@ -82,9 +81,9 @@ Ghosts are blue-green. My heart is amber.''')
 #--------------------------------------------------------------
         elif "the raccoon" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="The Raccoon", description="*by Yuri*", color=0x8524c8)
+            embed = discord.Embed(title="The Raccoon", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 It happened in the dead of night while I was slicing bread for a guilty snack.
@@ -117,9 +116,9 @@ And I feed myself again.''')
 #--------------------------------------------------------------
         elif "beach" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Beach", description="*by Yuri*", color=0x8524c8)
+            embed = discord.Embed(title="Beach", description="*by Yuri*", color=int(self.b.config["yuri"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 A marvel millions of years in the making.

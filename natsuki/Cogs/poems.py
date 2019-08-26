@@ -1,6 +1,5 @@
 import discord, random, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Poems(client.Cog):
@@ -11,8 +10,8 @@ class Poems(client.Cog):
     @client.command()
     async def poems(self,ctx):
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)  
-        e = discord.Embed(color=conf.norm)
+            await asyncio.sleep(self.b.config['type_speed'])  
+        e = discord.Embed(color=int(self.b.config["natsuki"]["embed_color"], base=16))
         e.set_author(name="My Poems!", icon_url=self.b.user.avatar_url)
         e.add_field(name="Poem #1",value="Amy likes spiders.")
         e.add_field(name="Poem #2",value="I'll be your beach.",inline=False)
@@ -30,9 +29,9 @@ class Poems(client.Cog):
 #--------------------------------------------------------------
         elif "eagles can fly" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Eagles Can Fly", description="*by Natsuki*", color=0xff42e2)
+            embed = discord.Embed(title="Eagles Can Fly", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send(''' 
 Monkeys can climb 
@@ -50,9 +49,9 @@ But that's about it.''')
 #--------------------------------------------------------------
         elif "amy likes spiders" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Amy likes spiders", description="*by Natsuki*", color=0xff42e2)
+            embed = discord.Embed(title="Amy likes spiders", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send(''' 
 You know what I heard about Amy? 
@@ -94,9 +93,9 @@ And I'm gonna tell everyone.''')
 #--------------------------------------------------------------
         elif "i'll be your beach" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="I'll be your beach", description="*by Natsuki*", color=0xff42e2)
+            embed = discord.Embed(title="I'll be your beach", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send(''' 
 Your mind is so full of troubles and fears 
@@ -138,9 +137,9 @@ You'll learn to love yourself again.''')
 #--------------------------------------------------------------
         elif "because you" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Because you", description="*by Natsuki*", color=0xff42e2)
+            embed = discord.Embed(title="Because you", description="*by Natsuki*", color=int(self.b.config["natsuki"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send(''' 
 Tomorrow will be brighter with me around. 
@@ -173,5 +172,5 @@ Because you, because you, because you.''')
 #--------------------------------------------------------------
 
 
-def setup(bot):#No no child keep your hands off or this will break and not load
+def setup(bot):
     bot.add_cog(Poems(bot)) 

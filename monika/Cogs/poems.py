@@ -1,6 +1,5 @@
 import discord, random, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Poems(client.Cog):
@@ -11,8 +10,8 @@ class Poems(client.Cog):
     @client.command()
     async def poems(self,ctx):
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)
-        e = discord.Embed(color=conf.norm)
+            await asyncio.sleep(self.b.config['type_speed'])
+        e = discord.Embed(color=int(self.b.config["monika"]["embed_color"], base=16))
         e.set_author(name="My Poems!", icon_url=self.b.user.avatar_url)
         e.add_field(name="Poem #1",value="Hole in the Wall.")
         e.add_field(name="Poem #2",value="Hole in the Wall 2.",inline=False)
@@ -25,14 +24,38 @@ class Poems(client.Cog):
         poem_intros = ["Well, her writing style is unique, to say the least.", "I love how abstract Monika's writing is!", "There's a reason she's the president of the club!"]
 
         if poem is None:
-            await ctx.send("Uhh, sorry but this isn't a poem that i made.")
+            await ctx.send("Uhh, sorry but this isn't a poem that I made.")
+
+#-------------------------------------------------------------
+        elif "hole in the wall 2" in poem.lower():
+            async with ctx.message.channel.typing():
+                await asyncio.sleep(self.b.config['type_speed'])
+            await ctx.send(random.choice(poem_intros))
+            embed = discord.Embed(title="Hole in Wall (2)", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
+            await ctx.send(embed=embed)
+            await ctx.send('''
+But he wasn't looking at me.
+Confused, I frantically glance at my surroundings.
+But my burned eyes can no longer see color.
+Are there others in this room? Are they talking?
+Or are they simply poems on flat sheets of paper,
+The sound of frantic scrawling playing tricks on my ears?
+The room begins to crinkle.
+Closing in on me.
+The air I breathe dissipate before it reaches my lungs.
+I panic. There must be a way out.
+It's right there. He's right there.
+
+Swallowing my fears, I brandish my pen.''')
+#--------------------------------------------------------------
+
 
 #-------------------------------------------------------------
         elif "hole in the wall" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Hole in Wall", description="*by Monika*", color=0x12ba01)
+            embed = discord.Embed(title="Hole in Wall", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 It couldn't have been me.
@@ -52,37 +75,12 @@ And he, on the other side, was looking in.''')
 #-------------------------------------------------------------
 
 
-
-#-------------------------------------------------------------
-        elif "hole in the wall 2" in poem.lower():
-            async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
-            await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Hole in Wall (2)", description="*by Monika*", color=0x12ba01)
-            await ctx.send(embed=embed)
-            await ctx.send('''
-But he wasn't looking at me.
-Confused, I frantically glance at my surroundings.
-But my burned eyes can no longer see color.
-Are there others in this room? Are they talking?
-Or are they simply poems on flat sheets of paper,
-The sound of frantic scrawling playing tricks on my ears?
-The room begins to crinkle.
-Closing in on me.
-The air I breathe dissipate before it reaches my lungs.
-I panic. There must be a way out.
-It's right there. He's right there.
-
-Swallowing my fears, I brandish my pen.''')
-#--------------------------------------------------------------
-
-
 #--------------------------------------------------------------
         elif "save me" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Save me", description="*by Monika*", color=0x12ba01)
+            embed = discord.Embed(title="Save me", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 The colors, they won't stop.
@@ -111,9 +109,9 @@ Load me''')
 #--------------------------------------------------------------
         elif "the lady who knows everything" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="The lady who knows everything", description="*by Monika*", color=0x12ba01)
+            embed = discord.Embed(title="The lady who knows everything", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 An old tale tells of a lady who wanders Earth.
@@ -161,9 +159,9 @@ And with a breath, she blows me back afloat, and I pick up a gust of wind.''')
 #--------------------------------------------------------------
         elif "happy end" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Happy end", description="*by Monika*", color=0x12ba01)
+            embed = discord.Embed(title="Happy end", description="*by Monika*", color=int(self.b.config["monika"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 Pen in hand, I find my strength.

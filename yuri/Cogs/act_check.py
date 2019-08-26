@@ -1,6 +1,5 @@
 import discord, asyncio
 import discord.ext.commands as client
-from Cogs.config import conf
 
 
 class Act_check(client.Cog):
@@ -11,7 +10,7 @@ class Act_check(client.Cog):
     @client.command()
     @client.guild_only()
     async def act(self,ctx):
-        if ctx.guild.id not in conf.act2:
+        if ctx.guild.id not in self.b.act2:
             await ctx.send("I'm on Act 1.")
         else:
             await ctx.send("I'm on Act 2.")

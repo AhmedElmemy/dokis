@@ -1,7 +1,6 @@
 ﻿import discord, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
-from Cogs.config import conf
 
 
 class Cooldown(client.Cog):
@@ -14,7 +13,7 @@ class Cooldown(client.Cog):
         if isinstance(exception, discord.ext.commands.errors.CommandOnCooldown):
             if ctx.guild is None:
                 pass
-            elif ctx.guild.id in conf.act2:
+            elif ctx.guild.id in self.bot.act2:
                 if ctx.command == "tickle":
                     await ctx.send("Oh! So you want to tickle me that badly, do you?")
                 elif ctx.command == "hug":

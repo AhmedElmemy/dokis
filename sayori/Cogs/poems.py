@@ -1,7 +1,6 @@
 import discord, random, asyncio
 import discord.ext.commands as client
 from discord.ext.commands.cooldowns import BucketType
-from Cogs.config import conf
 
 
 class Poems(client.Cog):
@@ -13,8 +12,8 @@ class Poems(client.Cog):
     @client.cooldown(1, 7, BucketType.user)
     async def poems(self,ctx):
         async with ctx.message.channel.typing():
-            await asyncio.sleep(conf.type_speed)
-        e = discord.Embed(color=conf.norm)
+            await asyncio.sleep(self.b.config['type_speed'])
+        e = discord.Embed(color=int(self.b.config["sayori"]["embed_color"], base=16))
         e.set_author(name="My Poems!", icon_url=self.b.user.avatar_url)
         e.add_field(name="Poem #1",value="Dear Sunshine.")
         e.add_field(name="Poem #2",value="Bottles.",inline=False)
@@ -31,9 +30,9 @@ class Poems(client.Cog):
 #--------------------------------------------------------------
         elif "dear sunshine" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="Dear Sunshine", description="*by Sayori*", color=conf.norm)
+            embed = discord.Embed(title="Dear Sunshine", description="*by Sayori*", color=int(self.b.config["sayori"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 The way you glow through my blinds in the morning
@@ -57,8 +56,8 @@ I want breakfast.''')
 #--------------------------------------------------------------
         elif "bottles" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
-            embed = discord.Embed(title="Bottles", description="*by Sayori*", color=conf.norm)
+                await asyncio.sleep(self.b.config['type_speed'])
+            embed = discord.Embed(title="Bottles", description="*by Sayori*", color=int(self.b.config["sayori"]["embed_color"], base=16))
             await ctx.send(random.choice(poem_intros))
             await ctx.send(embed=embed)
             await ctx.send('''
@@ -107,9 +106,9 @@ Inside my head.''')
 #--------------------------------------------------------------
         elif "%" in poem.lower():
             async with ctx.message.channel.typing():
-                await asyncio.sleep(conf.type_speed)
+                await asyncio.sleep(self.b.config['type_speed'])
             await ctx.send(random.choice(poem_intros))
-            embed = discord.Embed(title="%", description="*by Sayori*", color=conf.norm)
+            embed = discord.Embed(title="%", description="*by Sayori*", color=int(self.b.config["sayori"]["embed_color"], base=16))
             await ctx.send(embed=embed)
             await ctx.send('''
 Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of my head. Get out of
