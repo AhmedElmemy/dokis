@@ -21,6 +21,8 @@ class toggle(client.Cog):
                 await ctx.send("Fine, I won't react to chat triggers.")
             elif self.b.doki == "sayori":
                 await ctx.send("Okay, I won't react to the triggers in chat!")
+            elif self.b.doki == "yuri":
+                await ctx.send("O-Okay, I won't react to chat triggers...")
         else: # Enables chat triggers.
             self.b.w_tog_off.remove(ctx.guild.id)
             if self.b.doki == "mc":
@@ -31,6 +33,8 @@ class toggle(client.Cog):
                 await ctx.send("Fine, I'll react to chat triggers.")
             elif self.b.doki == "sayori":
                 await ctx.send("Okay, I'll react to the triggers in chat!")
+            elif self.b.doki == "yuri":
+                await ctx.send("O-Okay, I'll react to chat triggers...")
 
 
 def setup(bot):

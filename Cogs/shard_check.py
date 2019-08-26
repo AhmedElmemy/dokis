@@ -10,9 +10,9 @@ class ShardCheck(client.Cog):
     @client.command()
     @client.guild_only()
     async def shard(self,ctx): 
-        if conf.sharding is False:
-            await ctx.send("Sorry but this command only works while Sharding!")
-        elif conf.sharding is True:
+        if self.b.test_mode is True:
+            await ctx.send("Sharding is disabled on testing mode!")
+        else:
             await ctx.send(f"You're on **Shard {ctx.guild.shard_id}**.")
 
 

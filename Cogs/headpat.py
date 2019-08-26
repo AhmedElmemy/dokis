@@ -20,6 +20,13 @@ class Headpat(client.Cog):
             headpat_list = ["Hey! Don't pat me so hard!", "Geez, you're gonna mess up my hair!", "...okay, I guess that kinda felt nice...", "What do I look like, a puppy??", "T-thanks, I guess..."]
         elif self.b.doki == "sayori":
             headpat_list = ["Hehehe!~", "Just don't mess up my bow!", "S-stop being so silly! :blush:", "Well, my hair's already pretty messy, so I don't see an issue!", "Hehehe! Thank you!"]
+        elif self.b.doki == "yuri":
+            if ctx.guild is None:
+                headpat_list = ["Mmm... :relaxed:", "Oh... I'm not sure how to feel about that...", "H-Hey, could you be a little more gentle, please?", "That feels rather nice...", "T-Thank you."]
+            elif ctx.guild.id in self.b.act2:
+                headpat_list = ["Oh, only my head is being pat? Shame.", "Huhuhu. I love it when you do cute things like that to me!", "Mmm... You know what would be better? If you moved that hand somewhere else...", "Oh, am I your dog or something? That's okay. I'll be anything you want me to be, my love."]
+            else:
+                headpat_list = ["Mmm... :relaxed:", "Oh... I'm not sure how to feel about that...", "H-Hey, could you be a little more gentle, please?", "That feels rather nice...", "T-Thank you."]
         await ctx.send(random.choice(headpat_list))
 
 

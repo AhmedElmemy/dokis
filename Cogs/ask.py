@@ -20,6 +20,13 @@ class Ask(client.Cog):
                 await ctx.send("Ahaha! D-did you want to ask me something?")
             elif self.b.doki == "mc":
                 await ctx.send("I can't answer a non-existent question.")
+            elif self.b.doki == "yuri":
+                if ctx.guild is None:
+                    await ctx.send("Did you want to ask me something? S-sorry if i was bothering you! Uuu...")
+                elif ctx.guild.id in self.b.act2:
+                    await ctx.send("Ahaha... If you don't have a question, that's okay. I'd rather stare at you.")
+                else:
+                    await ctx.send("Did you want to ask me something? S-sorry if i was bothering you! Uuu...")
         else:
             async with ctx.message.channel.typing():
                 await asyncio.sleep(self.b.config['type_speed'])
@@ -31,6 +38,12 @@ class Ask(client.Cog):
                 answer_list = ["Yes!", "No!", "Ahaha! I-I don't really know, to be honest...", "As Club President, I say 'yes'!", "As Club President, I say 'no'!", "As Club President, I say 'maybe'!", "Uh... Well, uh... I think the Vice President would be better suited for this question!", "Y-Yuri's smart, right? I'm sure she can answer that!", "Maybe you can try asking Natsuki; she knows more than she lets on."]
             elif self.b.doki == "mc":
                 answer_list = ["I don't know why you're asking me, go ask Sayori.", "Yes, I guess.", "No, I think; I don't care either way.", "Maybe? Monika would know.", "Yeh.", "No, just no."]
+            elif self.b.doki == "yuri":
+                if ctx.guild is None:
+                    pass
+                elif ctx.guild.id in self.b.act2:
+                    answer_list = ["Yes.", "I don't know, and I don't care. I just want to look at you...", "No.", "Possibly, but who knows?", "Meet me in the closet and we'll find out... :kissing_closed_eyes:", "Ahaha! You're so silly to ask such a question!", "I'm not sure... I'll think about it while I'm touching myself to you tonight."]
+                answer_list = ["Y-Yes.", "No...", "I'm not really sure.", "I don't believe so...", "I think that's a question best suited for Sayori.", "Perhaps Monika could be of better help?", "I-I don't know. I'm sorry...", "Natsuki might know.", "I believe so!"]
             await ctx.send(random.choice(answer_list))
 
 

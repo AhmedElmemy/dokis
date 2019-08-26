@@ -24,6 +24,11 @@ class doki(commands.Bot if test_mode else commands.AutoShardedBot):
         self.doki = dokiName
         self.test_mode = test_mode
         self.config = config
+        self.w_tog_off = []
+
+        # Exclusively for Yuri
+        if dokiName == "yuri":
+            self.act2 = []
         
         # Load command cogs.
         for file in os.listdir(f"Cogs"):

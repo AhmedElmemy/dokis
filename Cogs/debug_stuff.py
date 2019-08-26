@@ -33,9 +33,9 @@ class Debug(client.Cog):
 
         e4 = discord.Embed(title="Doki IDs:", description=f"**Monika:** {self.b.config['monika']['test_id' if self.b.test_mode else 'public_id']} \n\
         **Natsuki:** {self.b.config['natsuki']['test_id' if self.b.test_mode else 'public_id']} \n\
-        **Sayori:** {self.b.config['natsuki']['test_id' if self.b.test_mode else 'public_id']} \n\
-        **Yuri:** {self.b.config['natsuki']['test_id' if self.b.test_mode else 'public_id']} \n\
-        **MC:** {self.b.config['natsuki']['test_id' if self.b.test_mode else 'public_id']}",color=0x36393f)
+        **Sayori:** {self.b.config['sayori']['test_id' if self.b.test_mode else 'public_id']} \n\
+        **Yuri:** {self.b.config['yuri']['test_id' if self.b.test_mode else 'public_id']} \n\
+        **MC:** {self.b.config['mc']['test_id' if self.b.test_mode else 'public_id']}",color=0x36393f)
 
         await ctx.send(embed=e)
         #await ctx.send(embed=e2)
